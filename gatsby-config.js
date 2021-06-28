@@ -8,7 +8,11 @@ module.exports = {
   /* Your site config here */
   plugins: [
     `gatsby-plugin-image`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
   ],
+  flags: {
+    DEV_SSR: false,
+  },
 }

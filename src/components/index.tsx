@@ -1,4 +1,4 @@
-import HomePage from "./HomePage"
+import HomeComponent from "./HomeComponent"
 import Navbar from "./Navbar"
 
-export { HomePage, Navbar }
+export { HomeComponent, Navbar }

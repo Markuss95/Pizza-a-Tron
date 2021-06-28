@@ -1,11 +1,11 @@
 import React from "react"
+import "../css/layout.css"
 import styled from "styled-components"
-import "../css/index.css"
-import { HomePage } from "../components"
+import { HomeComponent } from "../components"
 export default function Home() {
   return (
     <Wrapper>
-      <HomePage />
+      <HomeComponent />
     </Wrapper>
   )
 }

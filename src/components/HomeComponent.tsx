@@ -4,14 +4,13 @@ import Navbar from "./Navbar"
 
 import React from "react"
 
-const HomePage = () => {
+const HomeComponent = () => {
   return (
     <Wrapper>
       <Navbar />
       <div className="section-center content-center">
         <div>
           <StaticImage
-            className="test"
             src="../assets/images/pizzaslice.png"
             alt="pizza"
             width={147.88}
@@ -29,12 +28,6 @@ const HomePage = () => {
 }
 
 const Wrapper = styled.div`
-  h1 {
-    text-align: left;
-    line-height: 46px;
-    line-height: 56px;
-    color: #383838;
-  }
   p {
     text-align: left;
     padding-top: 1rem;
@@ -52,6 +45,12 @@ const Wrapper = styled.div`
   .content-description {
     display: flex;
     flex-direction: column;
+    h1 {
+      text-align: left;
+      line-height: 46px;
+      line-height: 56px;
+      color: #383838;
+    }
   }
   .register-btn {
     display: flex;
@@ -68,4 +67,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default HomePage
+export default HomeComponent
