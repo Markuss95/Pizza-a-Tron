@@ -36,6 +36,7 @@ const Wrapper = styled.div`
     color: #383838;
   }
   p {
+    text-align: left;
     padding-top: 1rem;
     font-weight: normal;
     font-size: 1.2rem;
