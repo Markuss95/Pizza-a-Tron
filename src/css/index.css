@@ -1,0 +1,63 @@
+@import "../css/typography.css";
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  --clr-white: #fff;
+  --clr-black: #222;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --max-width: 1170px;
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Avenir, Inter "Helvetica Neue", sans-serif;
+  background: var(--clr-white);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1 {
+  font-family: Avenir;
+}
+.section-center {
+  width: 48vw;
+  margin: 0 auto;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid #dbdbdb;
+  font-size: 16px;
+  line-height: 24px;
+  width: 128px;
+  height: 40px;
+  border-radius: 36px;
+  padding: 0px 24px;
+  color: #383838;
+}
+.btn:hover {
+  cursor: pointer;
+}
