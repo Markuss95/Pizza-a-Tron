@@ -18,7 +18,7 @@ const HomeComponent = () => {
           />
         </div>
         <div className="content-description">
-          <h1>There is Pizza and then there is Pizz-á-tron Pizza!</h1>
+          <h1>Pizz-á-tron is your new favorite Pizza place!</h1>
           <p>We let our Pizza do the talking.</p>
           <button className="btn register-btn">Register</button>
         </div>
@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   p {
     text-align: left;
     padding-top: 1rem;
-    font-weight: normal;
+    font-weight: 800;
     font-size: 1.2rem;
     line-height: 28px;
     color: #8c8c8c;
@@ -47,9 +47,10 @@ const Wrapper = styled.div`
     flex-direction: column;
     h1 {
       text-align: left;
-      line-height: 46px;
-      line-height: 56px;
+      line-height: 3.3rem;
       color: #383838;
+      font-weight: 800;
+      font-size: 3rem;
     }
   }
   .register-btn {
