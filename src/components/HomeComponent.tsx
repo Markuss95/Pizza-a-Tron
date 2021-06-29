@@ -1,7 +1,6 @@
 import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import Navbar from "./Navbar"
-
 import React from "react"
 
 const HomeComponent = () => {
