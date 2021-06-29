@@ -3,8 +3,8 @@ import Layout from "../components/layout"
 import { HomeComponent } from "../components"
 export default function Home() {
   return (
-    <Layout>
+    <div>
       <HomeComponent />
-    </Layout>
+    </div>
   )
 }
