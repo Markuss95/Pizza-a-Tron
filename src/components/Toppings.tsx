@@ -75,7 +75,7 @@ const Wrapper = styled.div`
     width: 7rem;
     height: 7.5rem;
     border-radius: 5rem;
-    background-color: #ffffff;
+    background-color: #fff;
   }
   .first-topping-background {
     margin-left: 0;
