@@ -1,2 +1,2 @@
-import "./src/components/global.css"
+import "./src/css/global.css"
 import "@fontsource/inter"

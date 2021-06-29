@@ -30,8 +30,8 @@ const Wrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
-    width: 27rem;
-    height: 5.5rem;
+    width: 24rem;
+    height: 4.3rem;
     border-radius: 5rem;
     background-color: #ececf3;
     input {
@@ -54,8 +54,8 @@ const Wrapper = styled.div`
     border: 1px solid #dbdbdb;
     background-color: transparent;
     margin-right: 0.5rem;
-    height: 4.3rem;
-    width: 9.3rem;
+    height: 3.4rem;
+    width: 7rem;
     border-radius: 5rem;
   }
 `

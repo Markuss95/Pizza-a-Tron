@@ -107,8 +107,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     margin-left: 1rem;
-    width: 5.9rem;
-    height: 9rem;
+    width: 5.3rem;
+    height: 8rem;
     border: 1px solid #f2f2f2;
     box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.03);
     border-radius: 5rem;
@@ -125,14 +125,14 @@ const Wrapper = styled.div`
     align-items: center;
     position: absolute;
     margin-top: 0.4rem;
-    height: 4.8rem;
-    width: 4.8rem;
+    height: 3.8rem;
+    width: 3.8rem;
     background-color: white;
     border-radius: 50%;
   }
   .topping-name {
     position: absolute;
-    top: 5.6rem;
+    top: 4.6rem;
     font-weight: 800;
   }
 `

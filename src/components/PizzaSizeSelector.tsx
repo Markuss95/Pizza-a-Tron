@@ -42,8 +42,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 27rem;
-    height: 5.5rem;
+    width: 24rem;
+    height: 4.3rem;
     border-radius: 5rem;
     background-color: #ececf3;
     div {
@@ -58,8 +58,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 4.5rem;
-    width: 7.8rem;
+    height: 3.4rem;
+    width: 7rem;
     border-radius: 5rem;
   }
   .pizza-size:hover {
