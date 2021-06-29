@@ -71,3 +71,9 @@ a {
   line-height: 56px;
   color: #383838;
 }
+.box-wrapper {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
