@@ -10,6 +10,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
+    `babel-plugin-styled-components`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
   ],
   flags: {

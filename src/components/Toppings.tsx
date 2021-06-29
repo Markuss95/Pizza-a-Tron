@@ -71,6 +71,8 @@ const Wrapper = styled.div`
   }
   .topping-background {
     position: relative;
+    display: flex;
+    justify-content: center;
     margin-left: 1rem;
     width: 7rem;
     height: 7.5rem;
@@ -85,7 +87,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-left: 0.6rem;
+
     height: 4rem;
     width: 4rem;
     background-color: white;
