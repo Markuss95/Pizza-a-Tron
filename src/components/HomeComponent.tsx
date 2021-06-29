@@ -56,7 +56,7 @@ const Wrapper = styled.div`
   .register-btn {
     display: flex;
     flex-direction: column;
-    color: white;
+    color: #fff;
     justify-content: center;
     background-color: #b95de4;
     border-radius: 48px;
