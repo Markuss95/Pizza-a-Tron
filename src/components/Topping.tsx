@@ -20,6 +20,7 @@ const Topping = ({ topping }) => {
               {" "}
               <ChilliPepper />
             </div>
+            <p className="topping-name">Chilli</p>
           </div>
         </Wrapper>
       )
@@ -32,6 +33,7 @@ const Topping = ({ topping }) => {
               {" "}
               <Corn />
             </div>
+            <p className="topping-name">Corn</p>
           </div>
         </Wrapper>
       )
@@ -43,6 +45,7 @@ const Topping = ({ topping }) => {
               {" "}
               <Egg />
             </div>
+            <p className="topping-name">Egg</p>
           </div>
         </Wrapper>
       )
@@ -54,6 +57,7 @@ const Topping = ({ topping }) => {
               {" "}
               <Pineapple />
             </div>
+            <p className="topping-name">Pineapple</p>
           </div>
         </Wrapper>
       )
@@ -65,6 +69,7 @@ const Topping = ({ topping }) => {
               {" "}
               <Meat />
             </div>
+            <p className="topping-name">Meat</p>
           </div>
         </Wrapper>
       )
@@ -76,6 +81,7 @@ const Topping = ({ topping }) => {
               {" "}
               <Shrooms />
             </div>
+            <p className="topping-name">Shrooms</p>
           </div>
         </Wrapper>
       )
@@ -87,6 +93,7 @@ const Topping = ({ topping }) => {
               {" "}
               <Bacon />
             </div>
+            <p className="topping-name">Bacon</p>
           </div>
         </Wrapper>
       )
@@ -95,17 +102,19 @@ const Topping = ({ topping }) => {
 
 const Wrapper = styled.div`
   .topping-background {
+    cursor: pointer;
     position: relative;
     display: flex;
     justify-content: center;
     margin-left: 1rem;
-    width: 7rem;
+    width: 5.9rem;
+    height: 9rem;
     border: 1px solid #f2f2f2;
     box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.03);
-    height: 7.5rem;
     border-radius: 5rem;
     background-color: #fff;
   }
+
   .first-topping-background {
     margin-left: 0;
   }
@@ -115,11 +124,16 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: absolute;
-
-    height: 4rem;
-    width: 4rem;
+    margin-top: 0.4rem;
+    height: 4.8rem;
+    width: 4.8rem;
     background-color: white;
     border-radius: 50%;
+  }
+  .topping-name {
+    position: absolute;
+    top: 5.6rem;
+    font-weight: 800;
   }
 `
 export default Topping

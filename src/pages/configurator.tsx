@@ -1,24 +1,16 @@
 import React from "react"
 import styled from "styled-components"
 import Navbar from "../components/Navbar"
-import { Toppings } from "../components"
+import { Toppings, PizzaSizeSelector } from "../components"
 const configurator = () => {
   return (
     <Wrapper>
       <Navbar />
       <Toppings />
+      <PizzaSizeSelector />
     </Wrapper>
   )
 }
 
-const Wrapper = styled.div`
-  .configurator-openning-message {
-    margin-top: 4rem;
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: bold;
-    line-height: 56px;
-    color: #383838;
-  }
-`
+const Wrapper = styled.div``
 export default configurator
