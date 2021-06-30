@@ -18,7 +18,9 @@ const Navbar = () => {
             height={40.5}
           />
         </Link>
-        <button className="btn">Log in</button>
+        <Link to="/configurator">
+          <button className="btn">Log in</button>
+        </Link>
       </div>
     </Wrapper>
   )

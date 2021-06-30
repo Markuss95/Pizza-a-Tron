@@ -48,6 +48,7 @@ const Wrapper = styled.div`
   }
 
   .apply-code-btn {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,7 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import Navbar from "../components/Navbar"
-import { Toppings, PizzaSizeSelector, DiscountComponent } from "../components"
+import {
+  Toppings,
+  PizzaSizeSelector,
+  DiscountComponent,
+  ConfiguratorCheckout,
+} from "../components"
 const configurator = () => {
   return (
     <Wrapper>
@@ -9,6 +14,7 @@ const configurator = () => {
       <Toppings />
       <PizzaSizeSelector />
       <DiscountComponent />
+      <ConfiguratorCheckout />
     </Wrapper>
   )
 }

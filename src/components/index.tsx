@@ -4,7 +4,7 @@ import Toppings from "./Toppings"
 import Topping from "./Topping"
 import PizzaSizeSelector from "./PizzaSizeSelector"
 import DiscountComponent from "./DiscountComponent"
-
+import ConfiguratorCheckout from "./ConfiguratorCheckout"
 export {
   HomeComponent,
   Navbar,
@@ -12,4 +12,5 @@ export {
   Topping,
   PizzaSizeSelector,
   DiscountComponent,
+  ConfiguratorCheckout,
 }
