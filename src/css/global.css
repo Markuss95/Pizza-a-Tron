@@ -45,6 +45,7 @@ a {
 
 .section-center {
   width: 48vw;
+  max-width: 774px;
   margin: 0 auto;
 }
 
