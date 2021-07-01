@@ -10,15 +10,26 @@ import {
   Bacon,
 } from "../constants/icons"
 
-const Topping = ({ topping }) => {
+const Topping = ({
+  topping,
+  updateToppings,
+}: {
+  topping: string
+  updateToppings: (topping: string) => void
+}) => {
   switch (topping) {
     case "chilli peper":
       return (
         <Wrapper>
-          <div className="topping-background first-topping-background">
+          <div
+            className="topping-background first-topping-background"
+            onClick={() => updateToppings("chilli pepper")}
+          >
             <div className="topping-background-circle">
               {" "}
-              <ChilliPepper />
+              <div className="icon">
+                <ChilliPepper />
+              </div>
             </div>
             <p className="topping-name">Chilli</p>
           </div>
@@ -28,7 +39,10 @@ const Topping = ({ topping }) => {
     case "corn":
       return (
         <Wrapper>
-          <div className="topping-background ">
+          <div
+            className="topping-background "
+            onClick={() => updateToppings("corn")}
+          >
             <div className="topping-background-circle">
               {" "}
               <Corn />
@@ -40,7 +54,10 @@ const Topping = ({ topping }) => {
     case "egg":
       return (
         <Wrapper>
-          <div className="topping-background ">
+          <div
+            className="topping-background "
+            onClick={() => updateToppings("egg")}
+          >
             <div className="topping-background-circle">
               {" "}
               <Egg />
@@ -52,7 +69,10 @@ const Topping = ({ topping }) => {
     case "pineapple":
       return (
         <Wrapper>
-          <div className="topping-background ">
+          <div
+            className="topping-background "
+            onClick={() => updateToppings("Pineapple")}
+          >
             <div className="topping-background-circle">
               {" "}
               <Pineapple />
@@ -64,7 +84,10 @@ const Topping = ({ topping }) => {
     case "meat":
       return (
         <Wrapper>
-          <div className="topping-background ">
+          <div
+            className="topping-background "
+            onClick={() => updateToppings("meat")}
+          >
             <div className="topping-background-circle">
               {" "}
               <Meat />
@@ -76,7 +99,10 @@ const Topping = ({ topping }) => {
     case "shrooms":
       return (
         <Wrapper>
-          <div className="topping-background ">
+          <div
+            className="topping-background "
+            onClick={() => updateToppings("shrooms")}
+          >
             <div className="topping-background-circle">
               {" "}
               <Shrooms />
@@ -88,7 +114,10 @@ const Topping = ({ topping }) => {
     case "bacon":
       return (
         <Wrapper>
-          <div className="topping-background ">
+          <div
+            className="topping-background "
+            onClick={() => updateToppings("bacon")}
+          >
             <div className="topping-background-circle">
               {" "}
               <Bacon />
@@ -114,10 +143,16 @@ const Wrapper = styled.div`
     border-radius: 5rem;
     background-color: #fff;
   }
-
+  .topping-background:hover {
+    background-color: #e5c3f5;
+  }
+  .topping-background:hover > .topping-background-circle {
+    background-color: #edd5f8;
+  }
   .first-topping-background {
     margin-left: 0;
   }
+
   .topping-background-circle {
     display: flex;
     box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.03);

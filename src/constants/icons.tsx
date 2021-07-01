@@ -8,7 +8,7 @@ export const ChilliPepper = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }
@@ -20,7 +20,7 @@ export const Corn = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }
@@ -32,7 +32,7 @@ export const Egg = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }
@@ -44,7 +44,7 @@ export const Pineapple = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }
@@ -55,7 +55,7 @@ export const Meat = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }
@@ -67,7 +67,7 @@ export const Shrooms = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }
@@ -79,7 +79,7 @@ export const Bacon = () => {
       alt="chilli pepper"
       width={24}
       height={24.5}
-      imgStyle={{ backgroundColor: "white" }}
+      imgStyle={{ backgroundColor: "transparent" }}
     />
   )
 }

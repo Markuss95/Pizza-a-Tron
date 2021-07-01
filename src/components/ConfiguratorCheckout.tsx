@@ -17,7 +17,7 @@ const ConfiguratorCheckout = () => {
           />
         </div>
         <form className="pizza-quantity-wrapper">
-          <input type="number" placeholder="1" />
+          <input type="number" placeholder="1" min="1" />
           <p className="qty">QTY</p>
           <div className="line-seperator"></div>
           <p className="total-amount">$22.50</p>
@@ -34,11 +34,13 @@ const ConfiguratorCheckout = () => {
 
 const Wrapper = styled.div`
   .section-center {
-    display: inline;
+    display: block;
     position: absolute;
     bottom: 0%;
-    left: 24vw;
-    right: 24vw;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     height: 8.3rem;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid #f2f2f2;
