@@ -13,16 +13,34 @@ import {
 const Topping = ({
   topping,
   updateToppings,
+  chilli,
+  corn,
+  egg,
+  pineapple,
+  meat,
+  shrooms,
+  bacon,
 }: {
   topping: string
   updateToppings: (topping: string) => void
+  chilli?: string
+  corn?: string
+  egg?: string
+  pineapple?: string
+  meat?: string
+  shrooms?: string
+  bacon?: string
 }) => {
   switch (topping) {
     case "chilli peper":
       return (
         <Wrapper>
           <div
-            className="topping-background first-topping-background"
+            className={`${
+              chilli === "active"
+                ? "topping-background first-topping-background active"
+                : "topping-background first-topping-background"
+            } `}
             onClick={() => updateToppings("chilli pepper")}
           >
             <div className="topping-background-circle">
@@ -40,7 +58,11 @@ const Topping = ({
       return (
         <Wrapper>
           <div
-            className="topping-background "
+            className={`${
+              corn === "active"
+                ? "topping-background  active"
+                : "topping-background "
+            } `}
             onClick={() => updateToppings("corn")}
           >
             <div className="topping-background-circle">
@@ -55,7 +77,11 @@ const Topping = ({
       return (
         <Wrapper>
           <div
-            className="topping-background "
+            className={`${
+              egg === "active"
+                ? "topping-background  active"
+                : "topping-background "
+            } `}
             onClick={() => updateToppings("egg")}
           >
             <div className="topping-background-circle">
@@ -70,8 +96,12 @@ const Topping = ({
       return (
         <Wrapper>
           <div
-            className="topping-background "
-            onClick={() => updateToppings("Pineapple")}
+            className={`${
+              pineapple === "active"
+                ? "topping-background  active"
+                : "topping-background "
+            } `}
+            onClick={() => updateToppings("pineapple")}
           >
             <div className="topping-background-circle">
               {" "}
@@ -85,7 +115,11 @@ const Topping = ({
       return (
         <Wrapper>
           <div
-            className="topping-background "
+            className={`${
+              meat === "active"
+                ? "topping-background  active"
+                : "topping-background "
+            } `}
             onClick={() => updateToppings("meat")}
           >
             <div className="topping-background-circle">
@@ -100,7 +134,11 @@ const Topping = ({
       return (
         <Wrapper>
           <div
-            className="topping-background "
+            className={`${
+              shrooms === "active"
+                ? "topping-background  active"
+                : "topping-background "
+            } `}
             onClick={() => updateToppings("shrooms")}
           >
             <div className="topping-background-circle">
@@ -115,7 +153,11 @@ const Topping = ({
       return (
         <Wrapper>
           <div
-            className="topping-background "
+            className={`${
+              bacon === "active"
+                ? "topping-background  active"
+                : "topping-background "
+            } `}
             onClick={() => updateToppings("bacon")}
           >
             <div className="topping-background-circle">
@@ -143,6 +185,7 @@ const Wrapper = styled.div`
     border-radius: 5rem;
     background-color: #fff;
   }
+
   .topping-background:hover {
     background-color: #e5c3f5;
   }
@@ -169,6 +212,12 @@ const Wrapper = styled.div`
     position: absolute;
     top: 4.6rem;
     font-weight: 800;
+  }
+  .active {
+    background-color: #e5c3f5;
+    div {
+      background-color: #edd5f8;
+    }
   }
 `
 export default Topping
