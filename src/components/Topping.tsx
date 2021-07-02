@@ -186,12 +186,6 @@ const Wrapper = styled.div`
     background-color: #fff;
   }
 
-  .topping-background:hover {
-    background-color: #e5c3f5;
-  }
-  .topping-background:hover > .topping-background-circle {
-    background-color: #edd5f8;
-  }
   .first-topping-background {
     margin-left: 0;
   }
