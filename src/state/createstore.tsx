@@ -10,6 +10,11 @@ const initialState = {
   orderPrice: 0,
 }
 
-const createStore = () => reduxCreateStore(currentOrderReducer, initialState)
+const createStore = () =>
+  reduxCreateStore(
+    combineReducers({
+      currentOrder: currentOrderReducer,
+    })
+  )
 
 export default createStore

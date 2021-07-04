@@ -9,6 +9,7 @@ import {
   ConfiguratorCheckout,
 } from "../components"
 const Configurator = props => {
+  console.log(props.currentOrder.quantity)
   return (
     <Wrapper>
       <Navbar />
@@ -20,7 +21,6 @@ const Configurator = props => {
   )
 }
 const mapStateToProps = state => {
-  console.log(state)
   return {
     currentOrder: state.currentOrder,
   }
