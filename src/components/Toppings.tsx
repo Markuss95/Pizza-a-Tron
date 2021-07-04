@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Topping from "./Topping"
 const Toppings = () => {
   const [toppings, setToppings] = useState<string[]>([])
+  let toppingsPrice: number = 0
   let chilli: string,
     corn: string,
     egg: string,
@@ -19,6 +20,14 @@ const Toppings = () => {
       setToppings(filteredArray)
     }
   }
+  toppings.forEach(item => {
+    if (item === "meat" || item === "bacon") {
+      toppingsPrice = toppingsPrice + 5
+    } else {
+      toppingsPrice += 3
+    }
+  })
+
   if (toppings.find(topping => topping === "chilli pepper")) {
     chilli = "active"
   }
@@ -81,7 +90,7 @@ const Toppings = () => {
             bacon={bacon}
           />
         </div>
-        <p className="topping-price">Total price +$3.00</p>
+        <p className="topping-price">Total price +${toppingsPrice} </p>
       </div>
     </Wrapper>
   )
