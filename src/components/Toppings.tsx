@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
 import styled from "styled-components"
 import Topping from "./Topping"
-const Toppings = () => {
+import { setToppingsPrice } from "../modules/configurator/redux/current_order/actions"
+const Toppings = ({ setToppingsPrice }) => {
   const [toppings, setToppings] = useState<string[]>([])
   let toppingsPrice: number = 0
   let chilli: string,
@@ -12,6 +14,7 @@ const Toppings = () => {
     shrooms: string,
     bacon: string
   chilli = corn = egg = pineapple = meat = shrooms = bacon = ""
+
   const updateToppings = (topping: string) => {
     if (!toppings.find(item => item === topping)) {
       setToppings(toppings => [...toppings, topping])
@@ -20,6 +23,7 @@ const Toppings = () => {
       setToppings(filteredArray)
     }
   }
+
   toppings.forEach(item => {
     if (item === "meat" || item === "bacon") {
       toppingsPrice = toppingsPrice + 5
@@ -27,10 +31,10 @@ const Toppings = () => {
       toppingsPrice += 3
     }
   })
+  useEffect(() => {
+    setToppingsPrice(toppingsPrice)
+  }, [toppings])
 
-  if (toppings.find(topping => topping === "chilli pepper")) {
-    chilli = "active"
-  }
   if (toppings.find(topping => topping === "corn")) {
     corn = "active"
   }
@@ -52,7 +56,7 @@ const Toppings = () => {
   if (toppings.find(topping => topping === "chilli pepper")) {
     chilli = "active"
   }
-  console.log(toppings)
+
   return (
     <Wrapper>
       <div className="section-center">
@@ -96,6 +100,12 @@ const Toppings = () => {
   )
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setToppingsPrice: (number: number) => dispatch(setToppingsPrice(number)),
+  }
+}
+
 const Wrapper = styled.div`
   .content-center {
     margin-top: 2rem;
@@ -109,4 +119,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default Toppings
+export default connect(null, mapDispatchToProps)(Toppings)

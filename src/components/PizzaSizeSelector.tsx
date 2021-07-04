@@ -1,7 +1,23 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import { connect } from "react-redux"
 import styled from "styled-components"
-const PizzaSizeSelector = () => {
+import { setSizePrice } from "../modules/configurator/redux/current_order/actions"
+const PizzaSizeSelector = ({ setSizePrice }) => {
   const [size, setSize] = useState<String>("L")
+
+  useEffect(() => {
+    switch (size) {
+      case "S":
+        setSizePrice(10)
+        break
+      case "M":
+        setSizePrice(15)
+
+        break
+      case "L":
+        setSizePrice(20)
+    }
+  }, [size])
   return (
     <Wrapper>
       <div className="section-center">
@@ -31,6 +47,12 @@ const PizzaSizeSelector = () => {
       </div>
     </Wrapper>
   )
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setSizePrice: (number: number) => dispatch(setSizePrice(number)),
+  }
 }
 
 const Wrapper = styled.div`
@@ -67,4 +89,4 @@ const Wrapper = styled.div`
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   }
 `
-export default PizzaSizeSelector
+export default connect(null, mapDispatchToProps)(PizzaSizeSelector)

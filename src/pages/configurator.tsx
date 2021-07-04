@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Navbar from "../components/Navbar"
-import { connect } from "react-redux"
+
 import {
   Toppings,
   PizzaSizeSelector,
@@ -9,7 +9,6 @@ import {
   ConfiguratorCheckout,
 } from "../components"
 const Configurator = props => {
-  console.log(props.currentOrder.quantity)
   return (
     <Wrapper>
       <Navbar />
@@ -20,13 +19,8 @@ const Configurator = props => {
     </Wrapper>
   )
 }
-const mapStateToProps = state => {
-  return {
-    currentOrder: state.currentOrder,
-  }
-}
 
 const Wrapper = styled.div`
   height: 100vh;
 `
-export default connect(mapStateToProps)(Configurator)
+export default Configurator
