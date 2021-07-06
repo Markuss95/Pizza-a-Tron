@@ -20,8 +20,21 @@ interface SetDiscountAction {
   type: "SET_DISCOUNT"
   discount: boolean
 }
+interface SetQuantityAction {
+  type: "SET_QUANTITY"
+  quantity: number
+}
+interface setToppingsAction {
+  type: "SET_TOPPINGS"
+  toppings: string[]
+}
 
-type Action = SetToppingsPriceAction | SetSizePriceAction | SetDiscountAction
+type Action =
+  | SetToppingsPriceAction
+  | SetSizePriceAction
+  | SetDiscountAction
+  | SetQuantityAction
+  | setToppingsAction
 
 const orderReducerDefaultState: orderState = {
   toppings: [],
@@ -51,7 +64,16 @@ export default (
         ...state,
         discount: action.discount,
       }
-
+    case "SET_QUANTITY":
+      return {
+        ...state,
+        quantity: action.quantity,
+      }
+    case "SET_TOPPINGS":
+      return {
+        ...state,
+        toppings: action.toppings,
+      }
     default:
       return state
   }

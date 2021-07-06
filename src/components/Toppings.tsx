@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import Topping from "./Topping"
-import { setToppingsPrice } from "../modules/configurator/redux/current_order/actions"
-const Toppings = ({ setToppingsPrice }) => {
+import {
+  setToppingsPrice,
+  setToppings,
+} from "../modules/configurator/redux/current_order/actions"
+const Toppings = ({ setToppingsPrice, setToppingsAction }) => {
   const [toppings, setToppings] = useState<string[]>([])
   let toppingsPrice: number = 0
   let chilli: string,
@@ -33,6 +36,7 @@ const Toppings = ({ setToppingsPrice }) => {
   })
   useEffect(() => {
     setToppingsPrice(toppingsPrice)
+    setToppingsAction(toppings)
   }, [toppings])
 
   if (toppings.find(topping => topping === "corn")) {
@@ -103,6 +107,7 @@ const Toppings = ({ setToppingsPrice }) => {
 const mapDispatchToProps = dispatch => {
   return {
     setToppingsPrice: (number: number) => dispatch(setToppingsPrice(number)),
+    setToppingsAction: (toppings: string[]) => dispatch(setToppings(toppings)),
   }
 }
 

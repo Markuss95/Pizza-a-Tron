@@ -8,7 +8,7 @@ import {
   DiscountComponent,
   ConfiguratorCheckout,
 } from "../components"
-const Configurator = props => {
+const Configurator = () => {
   return (
     <Wrapper>
       <Navbar />

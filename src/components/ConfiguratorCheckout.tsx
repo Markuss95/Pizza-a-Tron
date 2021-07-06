@@ -2,15 +2,46 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { StaticImage } from "gatsby-plugin-image"
-const ConfiguratorCheckout = props => {
+import { setQuantity } from "../modules/configurator/redux/current_order/actions"
+import { setOrders } from "../modules/configurator/redux/orders/actions"
+
+interface orderState {
+  toppings: string[]
+  toppingsPrice: number
+  pizzaSizePrice: number
+  quantity: number
+  orderPrice: number
+  discount: boolean
+}
+
+const ConfiguratorCheckout = ({
+  currentOrder,
+  setQuantity,
+  allOrders,
+  setOrders,
+}) => {
+  let totalPrice =
+    (currentOrder.toppingsPrice + currentOrder.pizzaSizePrice) *
+    currentOrder.quantity
+
   const submitOrder = (e: React.FormEvent) => {
     e.preventDefault()
+    setOrders({
+      toppings: currentOrder.toppings,
+      toppingsPrice: currentOrder.toppingsPrice,
+      pizzaSizePrice: currentOrder.pizzaSizePrice,
+      quantity: currentOrder.quantity,
+      orderPrice: totalPrice,
+      discount: currentOrder.discount,
+    })
   }
-  let totalPrice =
-    props.currentOrder.toppingsPrice + props.currentOrder.pizzaSizePrice
-  if (props.currentOrder.discount) {
+  const setQuantityOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuantity(parseInt(e.target.value))
+  }
+  if (currentOrder.discount) {
     totalPrice = totalPrice - totalPrice * 0.1
   }
+  console.log(allOrders)
   return (
     <Wrapper>
       <div className="section-center">
@@ -26,7 +57,12 @@ const ConfiguratorCheckout = props => {
           />
         </div>
         <form className="pizza-quantity-wrapper" onSubmit={submitOrder}>
-          <input type="number" placeholder="1" min="1" />
+          <input
+            type="number"
+            placeholder="1"
+            min="1"
+            onChange={setQuantityOnChange}
+          />
           <p className="qty">QTY</p>
           <div className="line-seperator"></div>
           <p className="total-amount">
@@ -50,6 +86,13 @@ const ConfiguratorCheckout = props => {
 const mapStateToProps = state => {
   return {
     currentOrder: state.currentOrder,
+    allOrders: state.orders,
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    setQuantity: (quantity: number) => dispatch(setQuantity(quantity)),
+    setOrders: (orders: orderState) => dispatch(setOrders(orders)),
   }
 }
 
@@ -133,4 +176,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default connect(mapStateToProps)(ConfiguratorCheckout)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConfiguratorCheckout)

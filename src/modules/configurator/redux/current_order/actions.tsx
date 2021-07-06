@@ -12,3 +12,13 @@ export const setDiscount = (discount: boolean) => ({
   type: "SET_DISCOUNT",
   discount,
 })
+
+export const setQuantity = (quantity: number) => ({
+  type: "SET_QUANTITY",
+  quantity,
+})
+
+export const setToppings = (toppings: string[]) => ({
+  type: "SET_TOPPINGS",
+  toppings,
+})
