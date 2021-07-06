@@ -3,8 +3,14 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import { StaticImage } from "gatsby-plugin-image"
 const ConfiguratorCheckout = props => {
-  const [totalPrice, setTotalPrice] = useState<number>(0)
-  console.log(props.currentOrder)
+  const submitOrder = (e: React.FormEvent) => {
+    e.preventDefault()
+  }
+  let totalPrice =
+    props.currentOrder.toppingsPrice + props.currentOrder.pizzaSizePrice
+  if (props.currentOrder.discount) {
+    totalPrice = totalPrice - totalPrice * 0.1
+  }
   return (
     <Wrapper>
       <div className="section-center">
@@ -19,15 +25,11 @@ const ConfiguratorCheckout = props => {
             imgStyle={{ backgroundColor: "transparent" }}
           />
         </div>
-        <form className="pizza-quantity-wrapper">
+        <form className="pizza-quantity-wrapper" onSubmit={submitOrder}>
           <input type="number" placeholder="1" min="1" />
           <p className="qty">QTY</p>
           <div className="line-seperator"></div>
-          <p className="total-amount">
-            $
-            {props.currentOrder.toppingsPrice +
-              props.currentOrder.pizzaSizePrice}
-          </p>
+          <p className="total-amount">${totalPrice}</p>
           <p className="order-total">ORDER TOTAL</p>
           <button className="buy-pizza-btn" type="submit">
             {" "}
@@ -113,6 +115,7 @@ const Wrapper = styled.div`
     margin-top: -1.25rem;
   }
   .buy-pizza-btn {
+    cursor: pointer;
     position: absolute;
     padding: 16px 24px;
     background: #b95de4;

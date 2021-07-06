@@ -1,15 +1,27 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-const DiscountComponent = () => {
+import { connect } from "react-redux"
+import { setDiscount } from "../modules/configurator/redux/current_order/actions"
+const DiscountComponent = ({ setDiscount }) => {
   const [discountCode, setDiscountCode] = useState<
     string | number | readonly string[]
   >("")
+  const discountCodes = ["Italy", "Naples", "Github Copilot"]
+
+  const discountSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (discountCodes.find(code => code === discountCode)) {
+      setDiscount(true)
+    } else {
+      setDiscount(false)
+    }
+  }
   return (
     <Wrapper>
       <div className="section-center">
         <p className="component-title">Get the discount</p>
         <div className="box-wrapper">
-          <form>
+          <form onSubmit={discountSubmit}>
             <input
               type="text"
               value={discountCode}
@@ -22,6 +34,12 @@ const DiscountComponent = () => {
       </div>
     </Wrapper>
   )
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setDiscount: (discount: boolean) => dispatch(setDiscount(discount)),
+  }
 }
 
 const Wrapper = styled.div`
@@ -60,4 +78,4 @@ const Wrapper = styled.div`
     border-radius: 5rem;
   }
 `
-export default DiscountComponent
+export default connect(null, mapDispatchToProps)(DiscountComponent)

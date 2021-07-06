@@ -6,6 +6,7 @@ interface orderState {
   pizzaSizePrice: number
   quantity: number
   orderPrice: number
+  discount: boolean
 }
 interface SetToppingsPriceAction {
   type: "SET_TOPPINGS_PRICE"
@@ -15,8 +16,12 @@ interface SetSizePriceAction {
   type: "SET_SIZE_PRICE"
   price: number
 }
+interface SetDiscountAction {
+  type: "SET_DISCOUNT"
+  discount: boolean
+}
 
-type Action = SetToppingsPriceAction | SetSizePriceAction
+type Action = SetToppingsPriceAction | SetSizePriceAction | SetDiscountAction
 
 const orderReducerDefaultState: orderState = {
   toppings: [],
@@ -24,6 +29,7 @@ const orderReducerDefaultState: orderState = {
   pizzaSizePrice: 0,
   quantity: 1,
   orderPrice: 0,
+  discount: false,
 }
 export default (
   state = orderReducerDefaultState,
@@ -39,6 +45,11 @@ export default (
       return {
         ...state,
         pizzaSizePrice: action.price,
+      }
+    case "SET_DISCOUNT":
+      return {
+        ...state,
+        discount: action.discount,
       }
 
     default:
