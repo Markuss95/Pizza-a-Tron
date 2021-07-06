@@ -29,7 +29,13 @@ const ConfiguratorCheckout = props => {
           <input type="number" placeholder="1" min="1" />
           <p className="qty">QTY</p>
           <div className="line-seperator"></div>
-          <p className="total-amount">${totalPrice}</p>
+          <p className="total-amount">
+            $
+            {totalPrice.toLocaleString("en", {
+              useGrouping: false,
+              minimumFractionDigits: 2,
+            })}
+          </p>
           <p className="order-total">ORDER TOTAL</p>
           <button className="buy-pizza-btn" type="submit">
             {" "}
