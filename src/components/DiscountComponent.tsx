@@ -6,13 +6,16 @@ const DiscountComponent = ({ setDiscount }) => {
   const [discountCode, setDiscountCode] = useState<
     string | number | readonly string[]
   >("")
+  const [message, setMessage] = useState<string>("")
   const discountCodes = ["Italy", "Naples", "Github Copilot"]
 
   const discountSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (discountCodes.find(code => code === discountCode)) {
+      setMessage("You have entered a valid code")
       setDiscount(true)
     } else {
+      setMessage("Code you have entered is not valid")
       setDiscount(false)
     }
   }
@@ -31,6 +34,7 @@ const DiscountComponent = ({ setDiscount }) => {
             <button className="apply-code-btn">Apply</button>
           </form>
         </div>
+        <p className="message">{message}</p>
       </div>
     </Wrapper>
   )
@@ -64,7 +68,11 @@ const Wrapper = styled.div`
       outline: none;
     }
   }
-
+  .message {
+    text-align: center;
+    padding-top: 1rem;
+    margin: 0 auto;
+  }
   .apply-code-btn {
     cursor: pointer;
     display: flex;
