@@ -61,6 +61,7 @@ const ConfiguratorCheckout = ({
             type="number"
             placeholder="1"
             min="1"
+            max="30"
             onChange={setQuantityOnChange}
           />
           <p className="qty">QTY</p>
