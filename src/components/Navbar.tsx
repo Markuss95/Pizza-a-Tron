@@ -31,7 +31,7 @@ const Wrapper = styled.div`
     font-style: normal;
     font-weight: 800;
     font-size: 1.4em;
-    line-height: 24px;
+    line-height: 2.2rem;
   }
   .navbar-center {
     padding-top: 2rem;

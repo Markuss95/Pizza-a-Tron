@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import Topping from "./Topping"
+import { Topping } from "."
 import {
   setToppingsPrice,
   setToppings,
@@ -112,6 +112,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const Wrapper = styled.div`
+  margin-top: 3rem;
   .content-center {
     margin-top: 2rem;
     display: flex;

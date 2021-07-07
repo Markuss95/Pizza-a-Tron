@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { setDiscount } from "../modules/configurator/redux/current_order/actions"
-const DiscountComponent = ({ setDiscount }) => {
+const DiscountComponent = ({
+  setDiscount,
+  smallerSizeDiscount,
+}: {
+  setDiscount: any
+  smallerSizeDiscount?: boolean
+}) => {
   const [discountCode, setDiscountCode] = useState<
     string | number | readonly string[]
   >("")
@@ -22,7 +28,12 @@ const DiscountComponent = ({ setDiscount }) => {
   return (
     <Wrapper>
       <div className="section-center">
-        <p className="component-title">Get the discount</p>
+        {!smallerSizeDiscount ? (
+          <p className="component-title">Get the discount</p>
+        ) : (
+          ""
+        )}
+
         <div className="box-wrapper">
           <form onSubmit={discountSubmit}>
             <input
@@ -47,6 +58,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const Wrapper = styled.div`
+  margin-top: 3rem;
   form {
     display: flex;
     justify-content: space-between;

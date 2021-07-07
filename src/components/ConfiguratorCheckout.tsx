@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import { connect } from "react-redux"
 import { StaticImage } from "gatsby-plugin-image"
 import { setQuantity } from "../modules/configurator/redux/current_order/actions"
@@ -74,10 +75,12 @@ const ConfiguratorCheckout = ({
             })}
           </p>
           <p className="order-total">ORDER TOTAL</p>
-          <button className="buy-pizza-btn" type="submit">
-            {" "}
-            Buy Pizza! Pizza!
-          </button>
+          <Link to="/checkout">
+            <button className="buy-pizza-btn" type="submit">
+              {" "}
+              Buy Pizza! Pizza!
+            </button>
+          </Link>
         </form>
       </div>
     </Wrapper>

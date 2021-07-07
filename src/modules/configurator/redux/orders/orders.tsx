@@ -22,7 +22,6 @@ export default (
   switch (action.type) {
     case "SET_ORDERS":
       return [...state, action.order]
-      console.log("test")
     default:
       return state
   }
