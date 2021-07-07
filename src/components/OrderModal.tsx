@@ -49,14 +49,14 @@ const Wrapper = styled.div`
 
   .discount-component {
     width: 19.5rem;
-    height: 3.5rem;
+    height: 3.2rem;
     background: #ececf3;
     border-radius: 4.5rem;
   }
   .order-modal {
     margin-top: 7rem;
-    width: 50.688rem;
-    height: 36rem;
+    width: 44.275rem;
+    height: 31.5rem;
     background-color: white;
     border: 1px solid #f7f7f7;
     box-sizing: border-box;
@@ -81,6 +81,7 @@ const Wrapper = styled.div`
     padding-right: 2.2rem;
   }
   .subtitle {
+    text-align: left;
     font-size: 1.3rem;
     font-weight: 600;
   }
