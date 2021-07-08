@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { setDiscount } from "../modules/configurator/redux/current_order/actions"
+
 const DiscountComponent = ({
   setDiscount,
   smallerSizeDiscount,
+  currentOrder,
 }: {
   setDiscount: any
   smallerSizeDiscount?: boolean
+  currentOrder: any
 }) => {
   const [discountCode, setDiscountCode] = useState<
     string | number | readonly string[]
@@ -49,6 +52,11 @@ const DiscountComponent = ({
       </div>
     </Wrapper>
   )
+}
+const mapStateToProps = state => {
+  return {
+    currentOrder: state.currentOrder,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -98,4 +106,4 @@ const Wrapper = styled.div`
     border-radius: 5rem;
   }
 `
-export default connect(null, mapDispatchToProps)(DiscountComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(DiscountComponent)

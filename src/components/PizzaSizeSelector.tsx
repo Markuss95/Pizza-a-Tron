@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { setSizePrice } from "../modules/configurator/redux/current_order/actions"
-const PizzaSizeSelector = ({ setSizePrice }) => {
-  const [size, setSize] = useState<String>("L")
+import {
+  setSizePrice,
+  setSize,
+} from "../modules/configurator/redux/current_order/actions"
+const PizzaSizeSelector = ({ setSizePrice, currentOrder, setSizeAction }) => {
+  const [size, setSize] = useState<String>(currentOrder.pizzaSize)
 
   useEffect(() => {
     switch (size) {
       case "S":
-        setSizePrice(10)
+        setSizeAction(10)
+        setSizeAction("S")
         break
       case "M":
+        setSizeAction("M")
         setSizePrice(15)
-
         break
       case "L":
+        setSizeAction("L")
         setSizePrice(20)
     }
   }, [size])
@@ -48,10 +53,15 @@ const PizzaSizeSelector = ({ setSizePrice }) => {
     </Wrapper>
   )
 }
-
+const mapStateToProps = state => {
+  return {
+    currentOrder: state.currentOrder,
+  }
+}
 const mapDispatchToProps = dispatch => {
   return {
     setSizePrice: (number: number) => dispatch(setSizePrice(number)),
+    setSizeAction: (size: string) => dispatch(setSize(size)),
   }
 }
 
@@ -89,4 +99,4 @@ const Wrapper = styled.div`
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   }
 `
-export default connect(null, mapDispatchToProps)(PizzaSizeSelector)
+export default connect(mapStateToProps, mapDispatchToProps)(PizzaSizeSelector)

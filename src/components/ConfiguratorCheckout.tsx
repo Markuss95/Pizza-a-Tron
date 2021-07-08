@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
 import { StaticImage } from "gatsby-plugin-image"
-import { setQuantity } from "../modules/configurator/redux/current_order/actions"
+import {
+  setQuantity,
+  setOrderPrice,
+} from "../modules/configurator/redux/current_order/actions"
 import { setOrders } from "../modules/configurator/redux/orders/actions"
 
 interface orderState {
@@ -20,11 +23,14 @@ const ConfiguratorCheckout = ({
   setQuantity,
   allOrders,
   setOrders,
+  setOrderPrice,
 }) => {
   let totalPrice =
     (currentOrder.toppingsPrice + currentOrder.pizzaSizePrice) *
     currentOrder.quantity
-
+  useEffect(() => {
+    setOrderPrice(totalPrice)
+  }, [totalPrice])
   const submitOrder = (e: React.FormEvent) => {
     e.preventDefault()
     setOrders({
@@ -42,7 +48,7 @@ const ConfiguratorCheckout = ({
   if (currentOrder.discount) {
     totalPrice = totalPrice - totalPrice * 0.1
   }
-  console.log(allOrders)
+
   return (
     <Wrapper>
       <div className="section-center">
@@ -60,7 +66,7 @@ const ConfiguratorCheckout = ({
         <form className="pizza-quantity-wrapper" onSubmit={submitOrder}>
           <input
             type="number"
-            placeholder="1"
+            placeholder={currentOrder.quantity}
             min="1"
             max="30"
             onChange={setQuantityOnChange}
@@ -97,6 +103,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setQuantity: (quantity: number) => dispatch(setQuantity(quantity)),
     setOrders: (orders: orderState) => dispatch(setOrders(orders)),
+    setOrderPrice: (price: number) => dispatch(setOrderPrice(price)),
   }
 }
 
@@ -154,14 +161,7 @@ const Wrapper = styled.div`
     margin-left: 5.4rem;
     margin-top: -3.5rem;
   }
-  .total-amount {
-    position: absolute;
-    margin-left: 7rem;
-    margin-top: -3.8rem !important;
-    font-size: 2.1rem;
-    font-weight: bold;
-    color: #b95de4 !important;
-  }
+
   .order-total {
     color: #b9b9b9;
     margin-left: 7rem;
@@ -177,6 +177,14 @@ const Wrapper = styled.div`
     margin-left: 17rem;
     margin-top: -3.5rem;
     color: white;
+  }
+  .total-amount {
+    position: absolute;
+    margin-left: 7rem;
+    margin-top: -3.8rem !important;
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: #b95de4 !important;
   }
 `
 

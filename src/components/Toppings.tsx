@@ -6,8 +6,9 @@ import {
   setToppingsPrice,
   setToppings,
 } from "../modules/configurator/redux/current_order/actions"
-const Toppings = ({ setToppingsPrice, setToppingsAction }) => {
-  const [toppings, setToppings] = useState<string[]>([])
+
+const Toppings = ({ setToppingsPrice, setToppingsAction, currentOrder }) => {
+  const [toppings, setToppings] = useState<string[]>(currentOrder.toppings)
   let toppingsPrice: number = 0
   let chilli: string,
     corn: string,
@@ -103,6 +104,11 @@ const Toppings = ({ setToppingsPrice, setToppingsAction }) => {
     </Wrapper>
   )
 }
+const mapStateToProps = state => {
+  return {
+    currentOrder: state.currentOrder,
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -125,4 +131,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default connect(null, mapDispatchToProps)(Toppings)
+export default connect(mapStateToProps, mapDispatchToProps)(Toppings)
