@@ -109,8 +109,10 @@ const Wrapper = styled.div`
   .basic-text {
     margin-top: -1rem;
     text-transform: capitalize;
+    line-height: 1.8rem;
   }
   .delivery {
+    margin-bottom: 0.5rem;
     color: #979797;
     font-size: 0.85rem;
   }
@@ -125,7 +127,7 @@ const Wrapper = styled.div`
     border-radius: 5rem;
     background-color: #ececf3;
     margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     input {
       height: 2rem;
       margin-left: 2.3rem;
