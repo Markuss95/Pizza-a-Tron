@@ -70,8 +70,14 @@ a {
   color: #383838;
 }
 .box-wrapper {
+  position: relative;
   margin-top: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.message {
+  text-align: center;
+  padding-top: 1rem;
+  margin: 0 auto;
 }

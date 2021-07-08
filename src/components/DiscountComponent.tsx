@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { setDiscount } from "../modules/configurator/redux/current_order/actions"
+import { discountCodes } from "../constants/discountCodes"
 
 const DiscountComponent = ({
   setDiscount,
@@ -12,11 +13,8 @@ const DiscountComponent = ({
   smallerSizeDiscount?: boolean
   currentOrder: any
 }) => {
-  const [discountCode, setDiscountCode] = useState<
-    string | number | readonly string[]
-  >("")
+  const [discountCode, setDiscountCode] = useState<string>("")
   const [message, setMessage] = useState<string>("")
-  const discountCodes = ["Italy", "Naples", "Github Copilot"]
 
   const discountSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,7 +34,6 @@ const DiscountComponent = ({
         ) : (
           ""
         )}
-
         <div className="box-wrapper">
           <form onSubmit={discountSubmit}>
             <input
@@ -88,11 +85,7 @@ const Wrapper = styled.div`
       outline: none;
     }
   }
-  .message {
-    text-align: center;
-    padding-top: 1rem;
-    margin: 0 auto;
-  }
+
   .apply-code-btn {
     cursor: pointer;
     display: flex;

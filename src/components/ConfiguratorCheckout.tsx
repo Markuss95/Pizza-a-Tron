@@ -165,24 +165,26 @@ const Wrapper = styled.div`
   .order-total {
     color: #b9b9b9;
     margin-left: 7rem;
-    margin-top: -1.25rem;
+    margin-top: -1.5rem;
   }
   .buy-pizza-btn {
     cursor: pointer;
     position: absolute;
+    height: 3.5rem;
+    width: 10rem;
     padding: 16px 24px;
     background: #b95de4;
     border-radius: 48px;
     border: none;
     margin-left: 17rem;
-    margin-top: -3.5rem;
+    margin-top: -4.1rem;
     color: white;
   }
   .total-amount {
     position: absolute;
     margin-left: 7rem;
-    margin-top: -3.8rem !important;
-    font-size: 2.1rem;
+    margin-top: -3.95rem !important;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #b95de4 !important;
   }
