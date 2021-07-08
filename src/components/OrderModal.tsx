@@ -106,6 +106,9 @@ const Wrapper = styled.div`
     width: 5rem;
     border-radius: 5rem;
   }
+  .message {
+    margin-top: 1rem;
+  }
   .basic-text {
     margin-top: -1rem;
     text-transform: capitalize;

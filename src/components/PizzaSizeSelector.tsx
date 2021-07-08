@@ -11,8 +11,8 @@ const PizzaSizeSelector = ({ setSizePrice, currentOrder, setSizeAction }) => {
   useEffect(() => {
     switch (size) {
       case "S":
-        setSizeAction(10)
         setSizeAction("S")
+        setSizePrice(10)
         break
       case "M":
         setSizeAction("M")
