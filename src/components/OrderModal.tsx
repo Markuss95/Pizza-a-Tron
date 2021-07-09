@@ -48,7 +48,7 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
             </p>
             <div className="horizontal-line"></div>
             <div className="box-wrapper">
-              <form onSubmit={discountSubmit}>
+              <form onSubmit={discountSubmit} className="discount-form">
                 <input
                   type="text"
                   value={discountCode}
@@ -70,7 +70,46 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
               </p>
             </div>
           </div>
-          <div className="shipping-information"></div>
+          <div>
+            <form action="address-form">
+              <p className="component-title subtitle">Shipping information</p>
+              <div className="address">
+                <input
+                  type="text"
+                  placeholder="Street name and number"
+                  className="shipping-input"
+                  required
+                />
+                <div className="city-postal">
+                  <input
+                    type="text"
+                    placeholder="City"
+                    className="shipping-input"
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder="Postal Code"
+                    className="shipping-input"
+                    required
+                  />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Country"
+                  className="shipping-input"
+                  required
+                />
+              </div>
+              <p className="component-title subtitle payment-details">
+                Payment details
+              </p>
+              <p>Cash on delivery</p>
+              <button type="submit" className="finish-order-btn">
+                Finish Order
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -93,6 +132,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  .address {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 1rem;
+  }
+  .address-form {
+  }
   .apply-code-btn {
     cursor: pointer;
     display: flex;
@@ -105,6 +152,11 @@ const Wrapper = styled.div`
     height: 2.4rem;
     width: 5rem;
     border-radius: 5rem;
+  }
+  .city-postal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
   .message {
     margin-top: 1rem;
@@ -119,21 +171,20 @@ const Wrapper = styled.div`
     color: #979797;
     font-size: 0.85rem;
   }
-  form {
+  .discount-form {
     position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
     width: 18.5rem;
-    height: 3.2rem;
+    height: 3rem;
     border-radius: 5rem;
     background-color: #ececf3;
     margin-bottom: 1rem;
     margin-top: 1.5rem;
     input {
       height: 2rem;
-      margin-left: 2.3rem;
       font-size: 0.85rem;
       background-color: transparent;
       border: none;
@@ -141,6 +192,9 @@ const Wrapper = styled.div`
     }
     input:focus {
       outline: none;
+    }
+    input::placeholder {
+      padding-left: 1rem;
     }
   }
   .delivery-info {
@@ -153,6 +207,25 @@ const Wrapper = styled.div`
     height: 3.2rem;
     background: #ececf3;
     border-radius: 4.5rem;
+  }
+  .finish-order-btn {
+    cursor: pointer;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    justify-content: center;
+    background: #b992e2;
+    border-radius: 48px;
+    align-items: center;
+    border: none;
+    width: 100%;
+    height: 3.7rem;
+    padding: 16px 48px;
+    transition: var(--transition);
+  }
+  .finish-order-btn:hover {
+    background: #b95de4;
   }
 
   .order-details {
@@ -205,8 +278,8 @@ const Wrapper = styled.div`
   }
   .order-modal {
     margin-top: 7rem;
-    width: 44.275rem;
-    height: 31.5rem;
+    width: 48rem;
+    height: 33.5rem;
     background-color: white;
     border: 1px solid #f7f7f7;
     box-sizing: border-box;
@@ -216,14 +289,29 @@ const Wrapper = styled.div`
   .order-modal-content {
     padding-left: 2.2rem;
     padding-right: 2.2rem;
+    padding-top: 2rem;
     position: relative;
     height: 25rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 4rem;
   }
-
-  .shipping-information {
+  .payment-details {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+  }
+  .shipping-input {
+    margin-left: 0 !important;
+    font-size: 0.85rem;
+    height: 3rem;
+    width: 100%;
+    border-radius: 3.93rem;
+    background-color: #ececf3;
+    border: none;
+    color: #8c8c8c;
+  }
+  .shipping-input::placeholder {
+    padding-left: 1rem;
   }
 `
 export default connect(mapStateToProps, mapDispatchToProps)(OrderModal)
