@@ -132,13 +132,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   .address {
     margin-top: 1rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 1rem;
-  }
-  .address-form {
   }
   .apply-code-btn {
     cursor: pointer;
@@ -185,6 +184,7 @@ const Wrapper = styled.div`
     margin-top: 1.5rem;
     input {
       height: 2rem;
+      margin-left: 1rem;
       font-size: 0.85rem;
       background-color: transparent;
       border: none;
@@ -192,9 +192,6 @@ const Wrapper = styled.div`
     }
     input:focus {
       outline: none;
-    }
-    input::placeholder {
-      padding-left: 1rem;
     }
   }
   .delivery-info {
@@ -220,7 +217,7 @@ const Wrapper = styled.div`
     align-items: center;
     border: none;
     width: 100%;
-    height: 3.7rem;
+    height: 3.5rem;
     padding: 16px 48px;
     transition: var(--transition);
   }
@@ -301,8 +298,9 @@ const Wrapper = styled.div`
     margin-bottom: 0rem;
   }
   .shipping-input {
-    margin-left: 0 !important;
     font-size: 0.85rem;
+    right: 10%;
+    padding-left: 1rem;
     height: 3rem;
     width: 100%;
     border-radius: 3.93rem;
@@ -311,7 +309,6 @@ const Wrapper = styled.div`
     color: #8c8c8c;
   }
   .shipping-input::placeholder {
-    padding-left: 1rem;
   }
 `
 export default connect(mapStateToProps, mapDispatchToProps)(OrderModal)
