@@ -1,10 +1,11 @@
 import React from "react"
-import { Navbar } from "../components"
+import { Navbar, OrderCompleted } from "../components"
 import styled from "styled-components"
 const orderSuccessful = () => {
   return (
     <Wrapper>
       <Navbar />
+      <OrderCompleted />
     </Wrapper>
   )
 }

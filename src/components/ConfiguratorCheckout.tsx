@@ -7,16 +7,6 @@ import {
   setQuantity,
   setOrderPrice,
 } from "../modules/configurator/redux/current_order/actions"
-import { setOrders } from "../modules/configurator/redux/orders/actions"
-
-interface orderState {
-  toppings: string[]
-  toppingsPrice: number
-  pizzaSizePrice: number
-  quantity: number
-  orderPrice: number
-  discount: boolean
-}
 
 const ConfiguratorCheckout = ({ currentOrder, setQuantity, setOrderPrice }) => {
   let totalPrice =

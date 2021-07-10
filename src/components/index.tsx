@@ -6,10 +6,12 @@ import PizzaSizeSelector from "./PizzaSizeSelector"
 import DiscountComponent from "./DiscountComponent"
 import ConfiguratorCheckout from "./ConfiguratorCheckout"
 import OrderModal from "./OrderModal"
+import OrderCompleted from "./OrderCompleted"
 
 export {
   HomeComponent,
   Navbar,
+  OrderCompleted,
   Toppings,
   Topping,
   OrderModal,
