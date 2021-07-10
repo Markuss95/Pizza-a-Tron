@@ -51,6 +51,7 @@ const OrderModal = ({
         country: country,
       },
     })
+    navigate("/orderSuccessful/")
   }
   console.log(orders)
   return (
