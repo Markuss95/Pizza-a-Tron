@@ -32,3 +32,7 @@ export const setOrderPrice = (price: number) => ({
   type: "SET_ORDER_PRICE",
   price,
 })
+
+export const setStateDefault = () => ({
+  type: "SET_STATE_DEFAULT",
+})

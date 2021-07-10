@@ -1,7 +1,13 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
-const OrderCompleted = () => {
+import { Link } from "gatsby"
+import { connect } from "react-redux"
+import { setStateDefault } from "../modules/configurator/redux/current_order/actions"
+const OrderCompleted = ({ setStateDefault }) => {
+  useEffect(() => {
+    setStateDefault()
+  }, [])
   return (
     <Wrapper>
       <div className="section-center content-center">
@@ -19,13 +25,20 @@ const OrderCompleted = () => {
             <br /> is on its way!
           </h1>
           <p>You should be enjoying your meal in no more than 45 minutes.</p>
-          <button className="btn register-btn">Buy another</button>
+          <Link to="/configurator">
+            <button className="btn register-btn">Buy another</button>
+          </Link>
         </div>
       </div>
     </Wrapper>
   )
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setStateDefault: () => dispatch(setStateDefault()),
+  }
+}
 const Wrapper = styled.div`
   p {
     text-align: left;
@@ -67,4 +80,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default OrderCompleted
+export default connect(null, mapDispatchToProps)(OrderCompleted)

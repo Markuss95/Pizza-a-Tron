@@ -37,6 +37,9 @@ interface setOrderPriceAction {
   type: "SET_ORDER_PRICE"
   price: number
 }
+interface setStateDefaultAction {
+  type: "SET_STATE_DEFAULT"
+}
 
 type Action =
   | SetToppingsPriceAction
@@ -46,6 +49,7 @@ type Action =
   | setToppingsAction
   | setOrderPriceAction
   | SetSizeAction
+  | setStateDefaultAction
 
 const orderReducerDefaultState: orderState = {
   toppings: [],
@@ -95,6 +99,12 @@ export default (
       return {
         ...state,
         orderPrice: action.price,
+      }
+    }
+    case "SET_STATE_DEFAULT": {
+      return {
+        ...state,
+        ...orderReducerDefaultState,
       }
     }
     default:
