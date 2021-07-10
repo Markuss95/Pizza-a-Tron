@@ -18,13 +18,7 @@ interface orderState {
   discount: boolean
 }
 
-const ConfiguratorCheckout = ({
-  currentOrder,
-  setQuantity,
-  allOrders,
-  setOrders,
-  setOrderPrice,
-}) => {
+const ConfiguratorCheckout = ({ currentOrder, setQuantity, setOrderPrice }) => {
   let totalPrice =
     (currentOrder.toppingsPrice + currentOrder.pizzaSizePrice) *
     currentOrder.quantity
@@ -33,14 +27,6 @@ const ConfiguratorCheckout = ({
   }, [totalPrice])
   const submitOrder = (e: React.FormEvent) => {
     e.preventDefault()
-    setOrders({
-      toppings: currentOrder.toppings,
-      toppingsPrice: currentOrder.toppingsPrice,
-      pizzaSizePrice: currentOrder.pizzaSizePrice,
-      quantity: currentOrder.quantity,
-      orderPrice: totalPrice,
-      discount: currentOrder.discount,
-    })
   }
   const setQuantityOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(parseInt(e.target.value))
@@ -96,13 +82,11 @@ const ConfiguratorCheckout = ({
 const mapStateToProps = state => {
   return {
     currentOrder: state.currentOrder,
-    allOrders: state.orders,
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     setQuantity: (quantity: number) => dispatch(setQuantity(quantity)),
-    setOrders: (orders: orderState) => dispatch(setOrders(orders)),
     setOrderPrice: (price: number) => dispatch(setOrderPrice(price)),
   }
 }

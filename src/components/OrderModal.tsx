@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { navigate } from "@reach/router"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { discountCodes } from "../constants/discountCodes"
@@ -6,14 +7,25 @@ import {
   setDiscount,
   setOrderPrice,
 } from "../modules/configurator/redux/current_order/actions"
-
-const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
-  const [discountCode, setDiscountCode] = useState<
-    string | number | readonly string[]
-  >("")
+import { setOrders } from "../modules/configurator/redux/orders/actions"
+import { orderState } from "../modules/configurator/redux/orders/actions"
+const OrderModal = ({
+  currentOrder,
+  setDiscount,
+  setOrderPrice,
+  setOrders,
+  orders,
+}) => {
+  const [discountCode, setDiscountCode] = useState<string>("")
   const [message, setMessage] = useState<string>("")
+  const [streetAndNumber, setStreetAndNumber] = useState<string>("")
+  const [city, setCity] = useState<string>("")
+  const [postalCode, setPostalCode] = useState<string>("")
+  const [country, setCountry] = useState<string>("")
+
   const discountSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
     if (discountCodes.find(code => code === discountCode)) {
       setMessage("You have entered a valid code")
       setDiscount(true)
@@ -23,6 +35,24 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
       setDiscount(false)
     }
   }
+  const addresSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setOrders({
+      toppings: currentOrder.toppings,
+      toppingsPrice: currentOrder.toppingsPrice,
+      pizzaSizePrice: currentOrder.pizzaSizePrice,
+      quantity: currentOrder.quantity,
+      orderPrice: currentOrder.totalPrice,
+      discount: currentOrder.discount,
+      address: {
+        streetAndNumber: streetAndNumber,
+        city: city,
+        postalCode: postalCode,
+        country: country,
+      },
+    })
+  }
+  console.log(orders)
   return (
     <Wrapper>
       <div className="order-modal">
@@ -71,12 +101,14 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
             </div>
           </div>
           <div>
-            <form action="address-form">
+            <form onSubmit={addresSubmit}>
               <p className="component-title subtitle">Shipping information</p>
               <div className="address">
                 <input
                   type="text"
                   placeholder="Street name and number"
+                  value={streetAndNumber}
+                  onChange={e => setStreetAndNumber(e.target.value)}
                   className="shipping-input"
                   required
                 />
@@ -84,12 +116,16 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
                   <input
                     type="text"
                     placeholder="City"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
                     className="shipping-input"
                     required
                   />
                   <input
                     type="text"
                     placeholder="Postal Code"
+                    value={postalCode}
+                    onChange={e => setPostalCode(e.target.value)}
                     className="shipping-input"
                     required
                   />
@@ -97,6 +133,8 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
                 <input
                   type="text"
                   placeholder="Country"
+                  value={country}
+                  onChange={e => setCountry(e.target.value)}
                   className="shipping-input"
                   required
                 />
@@ -119,12 +157,14 @@ const OrderModal = ({ currentOrder, setDiscount, setOrderPrice }) => {
 const mapStateToProps = state => {
   return {
     currentOrder: state.currentOrder,
+    orders: state.orders,
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     setDiscount: (discount: boolean) => dispatch(setDiscount(discount)),
     setOrderPrice: (price: number) => dispatch(setOrderPrice(price)),
+    setOrders: (order: orderState) => dispatch(setOrders(order)),
   }
 }
 
@@ -308,7 +348,8 @@ const Wrapper = styled.div`
     border: none;
     color: #8c8c8c;
   }
-  .shipping-input::placeholder {
+  .shipping-input:focus {
+    outline: none;
   }
 `
 export default connect(mapStateToProps, mapDispatchToProps)(OrderModal)

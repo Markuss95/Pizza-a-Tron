@@ -7,6 +7,12 @@ interface orderState {
   quantity: number
   orderPrice: number
   discount: boolean
+  address?: {
+    streetAndNumber: string
+    city: string
+    postalCode: number
+    country: string
+  }
 }
 interface setOrdersAction {
   type: "SET_ORDERS"
