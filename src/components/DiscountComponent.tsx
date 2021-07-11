@@ -1,17 +1,22 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { setDiscount } from "../modules/configurator/redux/current_order/actions"
+import {
+  setDiscount,
+  setOrderPrice,
+} from "../modules/configurator/redux/current_order/actions"
 import { discountCodes } from "../constants/discountCodes"
 
 const DiscountComponent = ({
   setDiscount,
   smallerSizeDiscount,
   currentOrder,
+  setOrderPrice,
 }: {
   setDiscount: any
   smallerSizeDiscount?: boolean
   currentOrder: any
+  setOrderPrice: any
 }) => {
   const [discountCode, setDiscountCode] = useState<string>("")
   const [message, setMessage] = useState<string>("")
@@ -21,6 +26,7 @@ const DiscountComponent = ({
     if (discountCodes.find(code => code === discountCode)) {
       setMessage("You have entered a valid code")
       setDiscount(true)
+      setOrderPrice(currentOrder.orderPrice - currentOrder.orderPrice * 0.1)
     } else {
       setMessage("Code you have entered is not valid")
       setDiscount(false)
@@ -59,6 +65,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setDiscount: (discount: boolean) => dispatch(setDiscount(discount)),
+    setOrderPrice: (price: number) => dispatch(setOrderPrice(price)),
   }
 }
 

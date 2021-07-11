@@ -58,7 +58,7 @@ const OrderModal = ({
     })
     navigate("/orderSuccessful")
   }
-
+  console.log(currentOrder.orderPrice)
   return (
     <Wrapper>
       <div className="order-modal">
