@@ -16,12 +16,14 @@ const OrderModal = ({
   setOrders,
   orders,
 }) => {
+  console.log()
   const [discountCode, setDiscountCode] = useState<string>("")
   const [message, setMessage] = useState<string>("")
   const [streetAndNumber, setStreetAndNumber] = useState<string>("")
   const [city, setCity] = useState<string>("")
   const [postalCode, setPostalCode] = useState<string>("")
   const [country, setCountry] = useState<string>("")
+  const today = new Date()
 
   const discountSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -42,8 +44,11 @@ const OrderModal = ({
       toppingsPrice: currentOrder.toppingsPrice,
       pizzaSizePrice: currentOrder.pizzaSizePrice,
       quantity: currentOrder.quantity,
-      orderPrice: currentOrder.totalPrice,
+      orderPrice: currentOrder.orderPrice,
       discount: currentOrder.discount,
+      date: `${today.getDate()}.${
+        today.getMonth() + 1
+      }.${today.getFullYear()}.`,
       address: {
         streetAndNumber: streetAndNumber,
         city: city,
@@ -53,7 +58,7 @@ const OrderModal = ({
     })
     navigate("/orderSuccessful")
   }
-  console.log(orders)
+
   return (
     <Wrapper>
       <div className="order-modal">

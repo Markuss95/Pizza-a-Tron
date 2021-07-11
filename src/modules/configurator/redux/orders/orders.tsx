@@ -7,6 +7,7 @@ interface orderState {
   quantity: number
   orderPrice: number
   discount: boolean
+  date: string
   address?: {
     streetAndNumber: string
     city: string

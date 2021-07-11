@@ -7,6 +7,7 @@ import DiscountComponent from "./DiscountComponent"
 import ConfiguratorCheckout from "./ConfiguratorCheckout"
 import OrderModal from "./OrderModal"
 import OrderCompleted from "./OrderCompleted"
+import OrderHistoryComponent from "./OrderHistoryComponent"
 
 export {
   HomeComponent,
@@ -15,6 +16,7 @@ export {
   Toppings,
   Topping,
   OrderModal,
+  OrderHistoryComponent,
   PizzaSizeSelector,
   DiscountComponent,
   ConfiguratorCheckout,
