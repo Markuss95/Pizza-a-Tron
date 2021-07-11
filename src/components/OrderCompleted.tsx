@@ -25,9 +25,14 @@ const OrderCompleted = ({ setStateDefault }) => {
             <br /> is on its way!
           </h1>
           <p>You should be enjoying your meal in no more than 45 minutes.</p>
-          <Link to="/configurator">
-            <button className="btn register-btn">Buy another</button>
-          </Link>
+          <div className="button-group">
+            <Link to="/configurator">
+              <button className="btn buy-btn">Buy another</button>
+            </Link>
+            <Link to="/orderHistory">
+              <button className="btn order-history-btn">Order history</button>
+            </Link>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -40,6 +45,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 const Wrapper = styled.div`
+  .button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
   p {
     text-align: left;
     padding-top: 1rem;
@@ -65,7 +75,7 @@ const Wrapper = styled.div`
       font-size: 3rem;
     }
   }
-  .register-btn {
+  .buy-btn {
     display: flex;
     flex-direction: column;
     color: #fff;
@@ -73,10 +83,27 @@ const Wrapper = styled.div`
     background-color: #b95de4;
     border-radius: 48px;
     align-items: center;
-    width: 186px;
+    width: 193px;
     height: 68px;
     padding: 16px 48px;
     margin-top: 1.5rem;
+  }
+  .order-history-btn {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    justify-content: center;
+    background-color: #b992e2;
+    border-radius: 48px;
+    align-items: center;
+    width: 193px;
+    height: 68px;
+    padding: 16px 48px;
+    margin-top: 1.5rem;
+    transition: var(--transition);
+  }
+  .order-history-btn:hover {
+    background-color: #b95de4;
   }
 `
 
