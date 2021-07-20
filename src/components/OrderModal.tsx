@@ -7,16 +7,15 @@ import {
   setDiscount,
   setOrderPrice,
 } from "../modules/configurator/redux/current_order/actions"
-import { setOrders } from "../modules/configurator/redux/orders/actions"
+import { startSetOrders } from "../modules/configurator/redux/orders/actions"
 import { orderState } from "../modules/configurator/redux/orders/actions"
 const OrderModal = ({
   currentOrder,
   setDiscount,
   setOrderPrice,
-  setOrders,
+  startSetOrders,
   orders,
 }) => {
-  console.log()
   const [discountCode, setDiscountCode] = useState<string>("")
   const [message, setMessage] = useState<string>("")
   const [streetAndNumber, setStreetAndNumber] = useState<string>("")
@@ -39,7 +38,7 @@ const OrderModal = ({
   }
   const addresSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setOrders({
+    startSetOrders({
       toppings: currentOrder.toppings,
       toppingsPrice: currentOrder.toppingsPrice,
       pizzaSizePrice: currentOrder.pizzaSizePrice,
@@ -58,7 +57,7 @@ const OrderModal = ({
     })
     navigate("/orderSuccessful")
   }
-  console.log(currentOrder.orderPrice)
+
   return (
     <Wrapper>
       <div className="order-modal">
@@ -170,7 +169,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setDiscount: (discount: boolean) => dispatch(setDiscount(discount)),
     setOrderPrice: (price: number) => dispatch(setOrderPrice(price)),
-    setOrders: (order: orderState) => dispatch(setOrders(order)),
+    startSetOrders: (order: orderState) => dispatch(startSetOrders(order)),
   }
 }
 

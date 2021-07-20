@@ -1,3 +1,4 @@
+import React from "react"
 import firebase from "firebase"
 
 const config = {
@@ -15,3 +16,5 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
 const database = firebase.database()
+
+export { firebase, database as default }
