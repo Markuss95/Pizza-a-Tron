@@ -1,9 +1,12 @@
-import React from "react"
+import React, {useEffect} from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { orderState } from "../modules/configurator/redux/orders/actions"
-const OrderHistoryComponent = ({ orders }) => {
-  console.log(orders)
+import { orderState,startSetOrdersFromDatabase } from "../modules/configurator/redux/orders/actions"
+
+const OrderHistoryComponent = ({ orders,startSetOrdersFromDatabase }) => {
+  useEffect(() => {
+    startSetOrdersFromDatabase()
+  },[])
   return (
     <Wrapper>
       <table>
@@ -18,8 +21,8 @@ const OrderHistoryComponent = ({ orders }) => {
         <tbody>
           {orders.map((order: orderState) => {
             return (
-              <tr key={order.orderPrice}>
-                <th>{order.quantity}</th>
+              <tr key={order.id}>
+                <th>{order.id}</th>
                 <th>Done</th>
                 <th>{order.date}</th>
                 <th>{order.orderPrice}$</th>
@@ -35,6 +38,11 @@ const OrderHistoryComponent = ({ orders }) => {
 const mapStateToProps = state => {
   return {
     orders: state.orders,
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    startSetOrdersFromDatabase: () => dispatch(startSetOrdersFromDatabase())
   }
 }
 
@@ -74,4 +82,4 @@ const Wrapper = styled.div`
     color: #fff;
   }
 `
-export default connect(mapStateToProps)(OrderHistoryComponent)
+export default connect(mapStateToProps,mapDispatchToProps)(OrderHistoryComponent)
