@@ -1,15 +1,13 @@
-import React from "react"
 import firebase from "firebase"
 
 const config = {
-  apiKey: "AIzaSyCrHXwGHOABphC1owEHX-V6Grn911qBZBo",
-  authDomain: "pizza-a-tron-df5e4.firebaseapp.com",
-  databaseURL:
-    "https://pizza-a-tron-df5e4-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "pizza-a-tron-df5e4",
-  storageBucket: "pizza-a-tron-df5e4.appspot.com",
-  messagingSenderId: "435361502043",
-  appId: "1:435361502043:web:40fdad24e38794238b807e",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 }
 
 if (!firebase.apps.length) {
