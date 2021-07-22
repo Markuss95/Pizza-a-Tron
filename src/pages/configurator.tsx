@@ -1,25 +1,20 @@
 import React from "react"
-import styled from "styled-components"
-import Navbar from "../components/Navbar"
 import {
   Toppings,
   PizzaSizeSelector,
   DiscountComponent,
   ConfiguratorCheckout,
+  Layout,
 } from "../components"
 const Configurator = () => {
   return (
-    <Wrapper>
-      <Navbar />
+    <Layout>
       <Toppings />
       <PizzaSizeSelector />
       <DiscountComponent />
       <ConfiguratorCheckout />
-    </Wrapper>
+    </Layout>
   )
 }
 
-const Wrapper = styled.div`
-  height: 100vh;
-`
 export default Configurator

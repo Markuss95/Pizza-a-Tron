@@ -1,16 +1,11 @@
 import React from "react"
-import { Navbar, OrderModal } from "../components"
-import styled from "styled-components"
+import { Layout, OrderModal } from "../components"
 const checkout = () => {
   return (
-    <Wrapper>
-      <Navbar />
+    <Layout>
       <OrderModal />
-    </Wrapper>
+    </Layout>
   )
 }
 
-const Wrapper = styled.div`
-  height: 100vh;
-`
 export default checkout

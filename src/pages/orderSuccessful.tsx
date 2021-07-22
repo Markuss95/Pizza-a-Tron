@@ -1,17 +1,11 @@
 import React from "react"
-import { Navbar, OrderCompleted } from "../components"
-import styled from "styled-components"
+import { Layout, OrderCompleted } from "../components"
 const orderSuccessful = () => {
   return (
-    <Wrapper>
-      <Navbar />
+    <Layout>
       <OrderCompleted />
-    </Wrapper>
+    </Layout>
   )
 }
-
-const Wrapper = styled.div`
-  height: 100vh;
-`
 
 export default orderSuccessful

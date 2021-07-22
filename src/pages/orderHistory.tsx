@@ -1,17 +1,12 @@
 import React from "react"
-import { Navbar } from "../components"
-import styled from "styled-components"
+import { Layout } from "../components"
 import { OrderHistoryComponent } from "../components"
 const orderHistory = () => {
   return (
-    <Wrapper>
-      <Navbar />
+    <Layout>
       <OrderHistoryComponent />
-    </Wrapper>
+    </Layout>
   )
 }
 
-const Wrapper = styled.div`
-  height: 100vh;
-`
 export default orderHistory

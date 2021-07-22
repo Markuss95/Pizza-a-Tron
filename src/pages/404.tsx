@@ -1,26 +1,26 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { Navbar } from "../components"
+import { Layout } from "../components"
 
 const Error = () => {
   return (
-    <Wrapper>
-      <Navbar />
-      <div className="section-center content-wrapper">
-        <h1>One thing is for sure. There is no Pizza here.</h1>
-        <div>
-          <Link to="/" className="btn return-btn">
-            Take me back!
-          </Link>
+    <Layout>
+      <Wrapper>
+        <div className="section-center content-wrapper">
+          <h1>One thing is for sure. There is no Pizza here.</h1>
+          <div>
+            <Link to="/" className="btn return-btn">
+              Take me back!
+            </Link>
+          </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </Layout>
   )
 }
 
 const Wrapper = styled.div`
-  height: 100vh;
   .content-wrapper {
     margin-top: 18rem;
     display: flex;

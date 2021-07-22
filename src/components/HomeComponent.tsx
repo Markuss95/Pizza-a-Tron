@@ -1,12 +1,10 @@
 import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import { Navbar } from "."
 import React from "react"
 
 const HomeComponent = () => {
   return (
     <Wrapper>
-      <Navbar />
       <div className="section-center content-center">
         <div>
           <StaticImage
