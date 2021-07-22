@@ -1,5 +1,6 @@
 import React from "react"
 import { Layout, OrderModal } from "../components"
+
 const checkout = () => {
   return (
     <Layout>
