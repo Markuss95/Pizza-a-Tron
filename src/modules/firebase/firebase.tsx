@@ -1,7 +1,9 @@
-import firebase from "firebase"
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/database"
 
 const config = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: "AIzaSyCrHXwGHOABphC1owEHX-V6Grn911qBZBo",
   authDomain: "pizza-a-tron-df5e4.firebaseapp.com",
   databaseURL:
     "https://pizza-a-tron-df5e4-default-rtdb.europe-west1.firebasedatabase.app",
@@ -15,5 +17,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
 const database = firebase.database()
+const auth = firebase.auth()
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider()
 
-export { firebase, database as default }
+export { firebase, googleAuthProvider, auth, database as default }

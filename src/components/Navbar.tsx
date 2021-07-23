@@ -1,8 +1,25 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import { connect } from "react-redux"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-const Navbar = () => {
+import {
+  startLogin,
+  startLogout,
+} from "../modules/configurator/redux/authentication/auth"
+import { auth } from "../modules/firebase/firebase"
+const Navbar = ({ startLogin, startLogout }) => {
+  const [logginButton, setLogginButton] = useState<string>("Log in")
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        setLogginButton("Log out")
+      } else {
+        setLogginButton("Log in")
+      }
+    })
+  }, [auth])
   return (
     <Wrapper className="section-center">
       <div className="section-center navbar-center">
@@ -18,12 +35,30 @@ const Navbar = () => {
             height={40.5}
           />
         </Link>
-        <Link to="/configurator">
-          <button className="btn">Log in</button>
-        </Link>
+
+        {logginButton === "Log in" ? (
+          <Link to="/configurator">
+            <button className="btn" onClick={startLogin}>
+              {"Log in"}
+            </button>
+          </Link>
+        ) : (
+          <Link to="/">
+            <button className="btn" onClick={startLogout}>
+              {"Log out"}
+            </button>
+          </Link>
+        )}
       </div>
     </Wrapper>
   )
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    startLogin: () => dispatch(startLogin()),
+    startLogout: () => dispatch(startLogout()),
+  }
 }
 
 const Wrapper = styled.div`
@@ -45,4 +80,4 @@ const Wrapper = styled.div`
   }
 `
 
-export default Navbar
+export default connect(null, mapDispatchToProps)(Navbar)
