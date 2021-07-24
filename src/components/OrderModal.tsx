@@ -55,7 +55,7 @@ const OrderModal = ({
         country: country,
       },
     })
-    navigate("/orderSuccessful")
+    navigate("/app/orderSuccessful")
   }
 
   return (

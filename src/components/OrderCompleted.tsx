@@ -29,7 +29,7 @@ const OrderCompleted = ({ setStateDefault }) => {
             <Link to="/configurator">
               <button className="btn buy-btn">Buy another</button>
             </Link>
-            <Link to="/orderHistory">
+            <Link to="/app/orderHistory">
               <button className="btn order-history-btn">Order history</button>
             </Link>
           </div>

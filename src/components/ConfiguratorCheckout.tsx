@@ -57,7 +57,7 @@ const ConfiguratorCheckout = ({ currentOrder, setQuantity, setOrderPrice }) => {
             })}
           </p>
           <p className="order-total">ORDER TOTAL</p>
-          <Link to="/checkout">
+          <Link to="/app/checkout">
             <button className="buy-pizza-btn" type="submit">
               {" "}
               Buy Pizza! Pizza!
