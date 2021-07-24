@@ -37,7 +37,7 @@ const Navbar = ({ startLogin, startLogout }) => {
         </Link>
 
         {logginButton === "Log in" ? (
-          <Link to="/configurator">
+          <Link to="app/configurator">
             <button className="btn" onClick={startLogin}>
               {"Log in"}
             </button>
