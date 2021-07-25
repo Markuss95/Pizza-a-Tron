@@ -7,6 +7,7 @@ import {
 } from "../modules/configurator/redux/orders/actions"
 
 const OrderHistoryComponent = ({ orders, startSetOrdersFromDatabase }) => {
+  console.log(orders)
   useEffect(() => {
     startSetOrdersFromDatabase()
   }, [])
