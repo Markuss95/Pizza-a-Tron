@@ -1,13 +1,14 @@
 import React, { useEffect } from "react"
-import Navbar from "./Navbar"
-import { auth } from "../modules/firebase/firebase"
 import { navigate } from "@reach/router"
+import { auth } from "../modules/firebase/firebase"
+import { connect } from "react-redux"
+import Navbar from "./Navbar"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, authUser }) => {
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
-        console.log("logged in")
+        console.log("logged in", authUser)
       } else {
         navigate("/")
       }
@@ -21,4 +22,10 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout
+const mapStateToProps = state => {
+  return {
+    authUser: state.auth,
+  }
+}
+
+export default connect(mapStateToProps)(Layout)

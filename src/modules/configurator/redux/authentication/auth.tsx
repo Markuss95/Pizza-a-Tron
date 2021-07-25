@@ -1,18 +1,21 @@
-import { firebase, googleAuthProvider } from "../../../firebase/firebase"
-import { navigate } from "@reach/router"
-export const startLogin = () => {
-  return () => {
-    return firebase
-      .auth()
-      .signInWithPopup(googleAuthProvider)
-      .then(() => {
-        navigate("/app/configurator")
-      })
-  }
+interface authState {
+  id?: string
 }
+interface authAction {
+  type: string
+  id?: string
+}
+const defaultStateValue: authState = {}
 
-export const startLogout = () => {
-  return () => {
-    return firebase.auth().signOut()
+export default (state = defaultStateValue, action: authAction) => {
+  switch (action.type) {
+    case "LOGIN":
+      return {
+        id: action.id,
+      }
+    case "LOGOUT":
+      return {}
+    default:
+      return state
   }
 }

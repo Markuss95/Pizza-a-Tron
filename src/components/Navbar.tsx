@@ -6,27 +6,33 @@ import { Link } from "gatsby"
 import {
   startLogin,
   startLogout,
-} from "../modules/configurator/redux/authentication/auth"
+  login,
+  logout,
+} from "../modules/configurator/redux/authentication/actions"
 import { auth } from "../modules/firebase/firebase"
-const Navbar = ({ startLogin, startLogout }) => {
+const Navbar = ({ startLogin, startLogout, login, logout }) => {
   const [logginButton, setLogginButton] = useState<string>("Log in")
+  const [link, setLink] = useState<string>("/")
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
         setLogginButton("Log out")
+        login(user.uid)
+        setLink("/app/configurator")
       } else {
         setLogginButton("Log in")
+        logout()
       }
     })
   }, [auth])
   return (
     <Wrapper className="section-center">
       <div className="section-center navbar-center">
-        <Link to="/">
+        <Link to={link}>
           <h1 className="navbar-title">Pizz-á-tron</h1>
         </Link>
-        <Link to="/">
+        <Link to={link}>
           <StaticImage
             src="../assets/images/smallslice.png"
             alt="pizza"
@@ -58,6 +64,8 @@ const mapDispatchToProps = dispatch => {
   return {
     startLogin: () => dispatch(startLogin()),
     startLogout: () => dispatch(startLogout()),
+    login: (id: string) => dispatch(login(id)),
+    logout: () => dispatch(logout()),
   }
 }
 
