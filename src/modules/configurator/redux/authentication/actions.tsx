@@ -1,4 +1,8 @@
-import { firebase, googleAuthProvider } from "../../../firebase/firebase"
+import {
+  firebase,
+  googleAuthProvider,
+  facebookAuthProvder,
+} from "../../../firebase/firebase"
 import { navigate } from "@reach/router"
 
 export const login = (id: string) => ({
@@ -13,6 +17,16 @@ export const startLoginWithGoogle = () => {
     return firebase
       .auth()
       .signInWithPopup(googleAuthProvider)
+      .then(() => {
+        navigate("/app/configurator")
+      })
+  }
+}
+export const startLoginWithFacebook = () => {
+  return () => {
+    return firebase
+      .auth()
+      .signInWithPopup(facebookAuthProvder)
       .then(() => {
         navigate("/app/configurator")
       })

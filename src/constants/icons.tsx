@@ -89,8 +89,20 @@ export const Google = () => {
     <StaticImage
       src="../assets/images/google.png"
       alt="Google logo"
-      width={24}
-      height={24}
+      width={37}
+      height={37}
+      imgStyle={{ backgroundColor: "transparent" }}
+    />
+  )
+}
+
+export const Facebook = () => {
+  return (
+    <StaticImage
+      src="../assets/images/facebook.png"
+      alt="Google logo"
+      width={37}
+      height={37}
       imgStyle={{ backgroundColor: "transparent" }}
     />
   )

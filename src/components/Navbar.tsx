@@ -7,13 +7,12 @@ import { Link } from "gatsby"
 import LoginModal from "./LoginModal"
 import { v4 as uuidv4 } from "uuid"
 import {
-  startLoginWithGoogle,
   startLogout,
   login,
   logout,
 } from "../modules/configurator/redux/authentication/actions"
 import { auth } from "../modules/firebase/firebase"
-const Navbar = ({ startLoginWithGoogle, startLogout, login, logout }) => {
+const Navbar = ({ startLogout, login, logout }) => {
   const [logginButton, setLogginButton] = useState<string>("Log in")
   const [link, setLink] = useState<string>("/")
   const [isLoginWindowOpen, setIsLoginWindowOpen] = useState<boolean>(false)
@@ -72,7 +71,6 @@ const Navbar = ({ startLoginWithGoogle, startLogout, login, logout }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
     startLogout: () => dispatch(startLogout()),
     login: (id: string) => dispatch(login(id)),
     logout: () => dispatch(logout()),
