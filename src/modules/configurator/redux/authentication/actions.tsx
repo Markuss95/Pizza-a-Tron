@@ -8,7 +8,7 @@ export const login = (id: string) => ({
 export const logout = () => ({
   type: "LOGOUT",
 })
-export const startLogin = () => {
+export const startLoginWithGoogle = () => {
   return () => {
     return firebase
       .auth()

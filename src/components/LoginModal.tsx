@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
 import Modal from "react-modal"
-import { startLogin } from "../modules/configurator/redux/authentication/actions"
+import { startLoginWithGoogle } from "../modules/configurator/redux/authentication/actions"
 import { Google } from "../constants/icons"
 import styled from "styled-components"
 const customStyles = {
@@ -20,11 +20,11 @@ Modal.setAppElement("body")
 const LoginModal = ({
   isLoginWindowOpen,
   updateIsLoginWindowOpen,
-  startLogin,
+  startLoginWithGoogle,
 }: {
   isLoginWindowOpen: boolean
   updateIsLoginWindowOpen: () => void
-  startLogin: any
+  startLoginWithGoogle: any
 }) => {
   let googleBar
   const closeModal = () => {
@@ -44,7 +44,7 @@ const LoginModal = ({
         <div>
           <Link
             to="/app/configurator"
-            onClick={startLogin}
+            onClick={startLoginWithGoogle}
             // ref={_googleBar => (googleBar = _googleBar)}
             className="google-bar"
           >
@@ -61,7 +61,7 @@ const LoginModal = ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    startLogin: () => dispatch(startLogin()),
+    startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
   }
 }
 const Wrapper = styled.div`
