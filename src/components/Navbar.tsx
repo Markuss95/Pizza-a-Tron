@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react"
+import { navigate } from "@reach/router"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import LoginModal from "./LoginModal"
+import { v4 as uuidv4 } from "uuid"
 import {
   startLogin,
   startLogout,
@@ -13,7 +16,11 @@ import { auth } from "../modules/firebase/firebase"
 const Navbar = ({ startLogin, startLogout, login, logout }) => {
   const [logginButton, setLogginButton] = useState<string>("Log in")
   const [link, setLink] = useState<string>("/")
+  const [isLoginWindowOpen, setIsLoginWindowOpen] = useState<boolean>(false)
 
+  const updateIsLoginWindowOpen = () => {
+    setIsLoginWindowOpen(!isLoginWindowOpen)
+  }
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -23,11 +30,17 @@ const Navbar = ({ startLogin, startLogout, login, logout }) => {
       } else {
         setLogginButton("Log in")
         logout()
+        navigate("/")
       }
     })
   }, [auth])
   return (
     <Wrapper className="section-center">
+      <LoginModal
+        isLoginWindowOpen={isLoginWindowOpen}
+        updateIsLoginWindowOpen={updateIsLoginWindowOpen}
+        key={uuidv4()}
+      />
       <div className="section-center navbar-center">
         <Link to={link}>
           <h1 className="navbar-title">Pizz-á-tron</h1>
@@ -41,13 +54,10 @@ const Navbar = ({ startLogin, startLogout, login, logout }) => {
             height={40.5}
           />
         </Link>
-
         {logginButton === "Log in" ? (
-          <Link to="app/configurator">
-            <button className="btn" onClick={startLogin}>
-              {"Log in"}
-            </button>
-          </Link>
+          <button className="btn" onClick={updateIsLoginWindowOpen}>
+            Log in
+          </button>
         ) : (
           <Link to="/">
             <button className="btn" onClick={startLogout}>

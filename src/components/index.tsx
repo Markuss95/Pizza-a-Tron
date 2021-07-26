@@ -9,12 +9,14 @@ import OrderModal from "./OrderModal"
 import OrderCompleted from "./OrderCompleted"
 import OrderHistoryComponent from "./OrderHistoryComponent"
 import Layout from "./layout"
+import LoginModal from "./LoginModal"
 
 export {
   HomeComponent,
   Navbar,
   OrderCompleted,
   Layout,
+  LoginModal,
   Toppings,
   Topping,
   OrderModal,
