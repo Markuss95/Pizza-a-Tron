@@ -83,3 +83,15 @@ export const Bacon = () => {
     />
   )
 }
+
+export const Google = () => {
+  return (
+    <StaticImage
+      src="../assets/images/google.png"
+      alt="Google logo"
+      width={24}
+      height={24}
+      imgStyle={{ backgroundColor: "transparent" }}
+    />
+  )
+}
