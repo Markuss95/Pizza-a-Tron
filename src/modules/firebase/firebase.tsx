@@ -3,7 +3,7 @@ import "firebase/auth"
 import "firebase/database"
 
 const config = {
-  apiKey: "AIzaSyCrHXwGHOABphC1owEHX-V6Grn911qBZBo",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "pizza-a-tron-df5e4.firebaseapp.com",
   databaseURL:
     "https://pizza-a-tron-df5e4-default-rtdb.europe-west1.firebasedatabase.app",
