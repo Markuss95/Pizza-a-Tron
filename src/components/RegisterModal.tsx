@@ -9,6 +9,7 @@ import {
 } from "../modules/configurator/redux/authentication/actions"
 import { Google, Facebook } from "../constants/icons"
 import styled from "styled-components"
+import auth from "../modules/configurator/redux/authentication/auth"
 
 const customStyles = {
   content: {
@@ -27,19 +28,26 @@ const RegisterModal = ({
   startLoginWithGoogle,
   startLoginWithFacebook,
   startCreateUserWithEmail,
+  authUser,
 }: {
   isRegisterWindowOpen: boolean
   updateIsRegisterWindowOpen: () => void
   startLoginWithGoogle: any
   startLoginWithFacebook: any
   startCreateUserWithEmail: any
+  authUser: any
 }) => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-
+  console.log(authUser)
   const closeModal = () => {
     updateIsRegisterWindowOpen()
   }
+  const createUserWithEmail = (e: React.FormEvent) => {
+    e.preventDefault()
+    startCreateUserWithEmail(email, password)
+  }
+
   return (
     <Modal
       isOpen={isRegisterWindowOpen}
@@ -71,10 +79,7 @@ const RegisterModal = ({
         <p className="component-title register-form-title">
           Create an Account!
         </p>
-        <form
-          className="registration-form"
-          onSubmit={() => startCreateUserWithEmail(email, password)}
-        >
+        <form className="registration-form" onSubmit={createUserWithEmail}>
           <input
             type="email"
             placeholder="Email"
@@ -89,13 +94,28 @@ const RegisterModal = ({
             onChange={e => setPassword(e.target.value)}
             required
           />
-          <button className="finish-registration-btn" type="submit">
-            Submit
-          </button>
+          <p>{authUser.accountCreation ? authUser.accountCreation : ""}</p>
+          {authUser.accountCreation === "Your account is created!" ? (
+            <Link to="/app/configurator">
+              <button className="finish-registration-btn buy-pizza-btn">
+                Buy Pizza
+              </button>
+            </Link>
+          ) : (
+            <button className="finish-registration-btn" type="submit">
+              Create
+            </button>
+          )}
         </form>
       </Wrapper>
     </Modal>
   )
+}
+
+const mapStateToProps = state => {
+  return {
+    authUser: state.auth,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -178,6 +198,12 @@ const Wrapper = styled.div`
   .finish-registration-btn:hover {
     background: #b95de4;
   }
+  .buy-pizza-btn {
+    background: #b95de4;
+  }
+  .buy-pizza-btn:hover {
+    background: red;
+  }
 `
 
-export default connect(null, mapDispatchToProps)(RegisterModal)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterModal)

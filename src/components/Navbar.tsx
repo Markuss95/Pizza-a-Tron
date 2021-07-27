@@ -6,13 +6,9 @@ import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import LoginModal from "./LoginModal"
 import { v4 as uuidv4 } from "uuid"
-import {
-  startLogout,
-  login,
-  logout,
-} from "../modules/configurator/redux/authentication/actions"
+import { startLogout } from "../modules/configurator/redux/authentication/actions"
 import { auth } from "../modules/firebase/firebase"
-const Navbar = ({ startLogout, login, logout }) => {
+const Navbar = ({ startLogout }) => {
   const [logginButton, setLogginButton] = useState<string>("Log in")
   const [link, setLink] = useState<string>("/")
   const [isLoginWindowOpen, setIsLoginWindowOpen] = useState<boolean>(false)
@@ -22,13 +18,11 @@ const Navbar = ({ startLogout, login, logout }) => {
   }
   useEffect(() => {
     auth.onAuthStateChanged(user => {
-      if (user) {
+      if (!!user) {
         setLogginButton("Log out")
-        login(user.uid)
         setLink("/app/configurator")
       } else {
         setLogginButton("Log in")
-        logout()
         navigate("/")
       }
     })
@@ -72,8 +66,6 @@ const Navbar = ({ startLogout, login, logout }) => {
 const mapDispatchToProps = dispatch => {
   return {
     startLogout: () => dispatch(startLogout()),
-    login: (id: string) => dispatch(login(id)),
-    logout: () => dispatch(logout()),
   }
 }
 

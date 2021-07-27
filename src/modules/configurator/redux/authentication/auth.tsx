@@ -1,10 +1,11 @@
 interface authState {
   id?: string
+  accountCreation?: string
+  fail?: string
 }
 interface authAction {
   type: string
   id?: string
-  success?: boolean
 }
 
 const defaultStateValue: authState = {}
@@ -17,8 +18,10 @@ export default (state = defaultStateValue, action: authAction) => {
       }
     case "LOGOUT":
       return {}
-    case "LOGIN_SUCCESS":
-      return { ...state, success: true }
+    case "SUCCESS":
+      return { ...state, accountCreation: "Your account is created!" }
+    case "FAIL":
+      return { ...state, accountCreation: "Something went wrong :/" }
     default:
       return state
   }

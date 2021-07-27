@@ -1,4 +1,5 @@
 import React, { useEffect } from "react"
+import { navigate } from "@reach/router"
 import { auth } from "../modules/firebase/firebase"
 import { connect } from "react-redux"
 import Navbar from "./Navbar"

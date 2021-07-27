@@ -5,16 +5,14 @@ import {
 } from "../../../firebase/firebase"
 import { navigate } from "@reach/router"
 
-export const login = (id: string) => ({
-  type: "LOGIN",
-  id,
+export const success = () => ({
+  type: "SUCCESS",
 })
-export const logout = () => ({
-  type: "LOGOUT",
+
+export const fail = () => ({
+  type: "FAIL",
 })
-export const loginSuccess = () => ({
-  type: "LOGIN_SUCCESS",
-})
+
 export const startLoginWithGoogle = () => {
   return () => {
     return firebase
@@ -35,15 +33,18 @@ export const startLoginWithFacebook = () => {
       })
   }
 }
+export const startLoginWithEmail = (email: string, password: string) => {}
 
 export const startCreateUserWithEmail = (email: string, password: string) => {
-  return () => {
-    firebase
+  return dispatch => {
+    return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {})
-      .catch(error => {
-        console.log(error)
+      .then(() => {
+        dispatch(success())
+      })
+      .catch(() => {
+        dispatch(fail())
       })
   }
 }
