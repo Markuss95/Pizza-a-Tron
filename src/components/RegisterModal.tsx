@@ -5,6 +5,7 @@ import Modal from "react-modal"
 import {
   startLoginWithGoogle,
   startLoginWithFacebook,
+  startCreateUserWithEmail,
 } from "../modules/configurator/redux/authentication/actions"
 import { Google, Facebook } from "../constants/icons"
 import styled from "styled-components"
@@ -25,12 +26,17 @@ const RegisterModal = ({
   updateIsRegisterWindowOpen,
   startLoginWithGoogle,
   startLoginWithFacebook,
+  startCreateUserWithEmail,
 }: {
   isRegisterWindowOpen: boolean
   updateIsRegisterWindowOpen: () => void
   startLoginWithGoogle: any
   startLoginWithFacebook: any
+  startCreateUserWithEmail: any
 }) => {
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+
   const closeModal = () => {
     updateIsRegisterWindowOpen()
   }
@@ -65,14 +71,40 @@ const RegisterModal = ({
         <p className="component-title register-form-title">
           Create an Account!
         </p>
-        <form className="registration-form">
-          <input type="text" placeholder="Email" />
-          <input type="text" placeholder="Password" />
-          <button className="finish-registration-btn">Submit</button>
+        <form
+          className="registration-form"
+          onSubmit={() => startCreateUserWithEmail(email, password)}
+        >
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+          <button className="finish-registration-btn" type="submit">
+            Submit
+          </button>
         </form>
       </Wrapper>
     </Modal>
   )
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
+    startLoginWithFacebook: () => dispatch(startLoginWithFacebook()),
+    startCreateUserWithEmail: (email: string, password: string) =>
+      dispatch(startCreateUserWithEmail(email, password)),
+  }
 }
 
 const Wrapper = styled.div`
@@ -147,10 +179,5 @@ const Wrapper = styled.div`
     background: #b95de4;
   }
 `
-const mapDispatchToProps = dispatch => {
-  return {
-    startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
-    startLoginWithFacebook: () => dispatch(startLoginWithFacebook()),
-  }
-}
+
 export default connect(null, mapDispatchToProps)(RegisterModal)

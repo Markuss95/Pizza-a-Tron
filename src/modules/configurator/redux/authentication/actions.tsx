@@ -12,6 +12,9 @@ export const login = (id: string) => ({
 export const logout = () => ({
   type: "LOGOUT",
 })
+export const loginSuccess = () => ({
+  type: "LOGIN_SUCCESS",
+})
 export const startLoginWithGoogle = () => {
   return () => {
     return firebase
@@ -29,6 +32,18 @@ export const startLoginWithFacebook = () => {
       .signInWithPopup(facebookAuthProvder)
       .then(() => {
         navigate("/app/configurator")
+      })
+  }
+}
+
+export const startCreateUserWithEmail = (email: string, password: string) => {
+  return () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {})
+      .catch(error => {
+        console.log(error)
       })
   }
 }

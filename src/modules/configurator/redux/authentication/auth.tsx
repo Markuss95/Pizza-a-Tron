@@ -4,7 +4,9 @@ interface authState {
 interface authAction {
   type: string
   id?: string
+  success?: boolean
 }
+
 const defaultStateValue: authState = {}
 
 export default (state = defaultStateValue, action: authAction) => {
@@ -15,6 +17,8 @@ export default (state = defaultStateValue, action: authAction) => {
       }
     case "LOGOUT":
       return {}
+    case "LOGIN_SUCCESS":
+      return { ...state, success: true }
     default:
       return state
   }
