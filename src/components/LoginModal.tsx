@@ -82,7 +82,7 @@ const LoginModal = ({
             <p>Continue with Facebook</p>
           </Link>
         </div>
-        <p className="component-title login-form-title">Log in with Email</p>
+
         <form className="registration-form" onSubmit={loginWithMail}>
           <input
             type="email"
@@ -150,6 +150,7 @@ const Wrapper = styled.div`
     position: relative;
     justify-content: space-between;
     margin-top: 1rem;
+    margin-bottom: 2rem;
     p {
       margin-left: 1rem;
       color: #383838;
