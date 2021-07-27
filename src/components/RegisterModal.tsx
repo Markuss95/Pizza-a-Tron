@@ -38,7 +38,7 @@ const RegisterModal = ({
 }) => {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-  console.log(authUser)
+
   const closeModal = () => {
     updateIsRegisterWindowOpen()
   }
@@ -75,9 +75,7 @@ const RegisterModal = ({
             <p>Continue with Facebook</p>
           </Link>
         </div>
-        <p className="component-title register-form-title">
-          Create an Account!
-        </p>
+        <p className="component-title register-form-title">Create an Account</p>
         <form className="registration-form" onSubmit={createUserWithEmail}>
           <input
             type="email"
@@ -132,13 +130,13 @@ const Wrapper = styled.div`
   .register-form-title {
     font-size: 1.2rem;
     margin-top: 0rem;
+    margin-bottom: 0.3rem;
   }
   .google-bar {
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-top: 1.5rem;
-
+    margin-top: 1rem;
     p {
       text-align: left;
       margin-right: 1.5rem;

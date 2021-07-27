@@ -13,6 +13,10 @@ export const fail = () => ({
   type: "FAIL",
 })
 
+export const loginFail = () => ({
+  type: "LOGIN_FAIL",
+})
+
 export const startLoginWithGoogle = () => {
   return () => {
     return firebase
@@ -34,12 +38,15 @@ export const startLoginWithFacebook = () => {
   }
 }
 export const startLoginWithEmail = (email: string, password: string) => {
-  return () => {
+  return dispatch => {
     return firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         navigate("/app/configurator")
+      })
+      .catch(() => {
+        dispatch(loginFail())
       })
   }
 }
