@@ -33,7 +33,16 @@ export const startLoginWithFacebook = () => {
       })
   }
 }
-export const startLoginWithEmail = (email: string, password: string) => {}
+export const startLoginWithEmail = (email: string, password: string) => {
+  return () => {
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        navigate("/app/configurator")
+      })
+  }
+}
 
 export const startCreateUserWithEmail = (email: string, password: string) => {
   return dispatch => {

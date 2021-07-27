@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
 import Modal from "react-modal"
 import {
   startLoginWithGoogle,
   startLoginWithFacebook,
+  startLoginWithEmail,
 } from "../modules/configurator/redux/authentication/actions"
 import { Google, Facebook } from "../constants/icons"
 import styled from "styled-components"
@@ -26,11 +27,13 @@ const LoginModal = ({
   updateIsLoginWindowOpen,
   startLoginWithGoogle,
   startLoginWithFacebook,
+  startLoginWithEmail,
 }: {
   isLoginWindowOpen: boolean
   updateIsLoginWindowOpen: () => void
   startLoginWithGoogle: any
   startLoginWithFacebook: any
+  startLoginWithEmail: any
 }) => {
   const closeModal = () => {
     updateIsLoginWindowOpen()
@@ -74,6 +77,8 @@ const mapDispatchToProps = dispatch => {
   return {
     startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
     startLoginWithFacebook: () => dispatch(startLoginWithFacebook()),
+    startLoginWithEmail: (email: string, password: string) =>
+      dispatch(startLoginWithEmail(email, password)),
   }
 }
 const Wrapper = styled.div`

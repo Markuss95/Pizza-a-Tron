@@ -9,7 +9,6 @@ import {
 } from "../modules/configurator/redux/authentication/actions"
 import { Google, Facebook } from "../constants/icons"
 import styled from "styled-components"
-import auth from "../modules/configurator/redux/authentication/auth"
 
 const customStyles = {
   content: {
