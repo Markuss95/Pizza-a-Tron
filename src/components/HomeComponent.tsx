@@ -1,10 +1,24 @@
+import React, { useState } from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import React from "react"
+import { v4 as uuidv4 } from "uuid"
+import { RegisterModal } from "."
 
 const HomeComponent = () => {
+  const [isRegisterWindowOpen, setIsRegisterWindowOpen] = useState<boolean>(
+    false
+  )
+  const updateIsRegisterWindowOpen = () => {
+    setIsRegisterWindowOpen(!isRegisterWindowOpen)
+  }
+
   return (
     <Wrapper>
+      <RegisterModal
+        isRegisterWindowOpen={isRegisterWindowOpen}
+        updateIsRegisterWindowOpen={updateIsRegisterWindowOpen}
+        key={uuidv4()}
+      />
       <div className="section-center content-center">
         <div>
           <StaticImage
@@ -17,7 +31,12 @@ const HomeComponent = () => {
         <div className="content-description">
           <h1>Pizz-á-tron is your new favorite Pizza place!</h1>
           <p>We let our Pizza do the talking.</p>
-          <button className="btn register-btn">Register</button>
+          <button
+            className="btn register-btn"
+            onClick={updateIsRegisterWindowOpen}
+          >
+            Register
+          </button>
         </div>
       </div>
     </Wrapper>

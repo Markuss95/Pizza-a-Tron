@@ -10,6 +10,7 @@ import OrderCompleted from "./OrderCompleted"
 import OrderHistoryComponent from "./OrderHistoryComponent"
 import Layout from "./layout"
 import LoginModal from "./LoginModal"
+import RegisterModal from "./RegisterModal"
 
 export {
   HomeComponent,
@@ -22,6 +23,7 @@ export {
   OrderModal,
   OrderHistoryComponent,
   PizzaSizeSelector,
+  RegisterModal,
   DiscountComponent,
   ConfiguratorCheckout,
 }
