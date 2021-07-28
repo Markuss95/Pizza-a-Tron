@@ -9,7 +9,6 @@ import {
 } from "../modules/configurator/redux/current_order/actions"
 import { startSetOrders } from "../modules/configurator/redux/orders/actions"
 import { orderState } from "../modules/configurator/redux/orders/actions"
-
 const OrderModal = ({
   currentOrder,
   setDiscount,

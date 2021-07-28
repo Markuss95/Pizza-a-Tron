@@ -1,6 +1,5 @@
 import React from "react"
 import { Layout, OrderCompleted } from "../components"
-
 const orderSuccessful = () => {
   return (
     <Layout>

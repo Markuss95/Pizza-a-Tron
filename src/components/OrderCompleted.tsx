@@ -4,7 +4,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { connect } from "react-redux"
 import { setStateDefault } from "../modules/configurator/redux/current_order/actions"
-
 const OrderCompleted = ({ setStateDefault }) => {
   useEffect(() => {
     setStateDefault()

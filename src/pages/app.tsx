@@ -1,11 +1,11 @@
 import React from "react"
 import { Router } from "@reach/router"
+import { Layout, Toppings } from "../components"
 import { RouteComponentProps } from "@reach/router"
 import Configurator from "./configurator"
 import Checkout from "./checkout"
 import OrderSuccessful from "./orderSuccessful"
 import OrderHistory from "./orderHistory"
-
 const App = () => (
   <Router>
     <RouterPage path="app/configurator" pageComponent={<Configurator />} />

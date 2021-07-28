@@ -8,7 +8,6 @@ import LoginModal from "./LoginModal"
 import { v4 as uuidv4 } from "uuid"
 import { startLogout } from "../modules/configurator/redux/authentication/actions"
 import { auth } from "../modules/firebase/firebase"
-
 const Navbar = ({ startLogout }) => {
   const [logginButton, setLogginButton] = useState<string>("Log in")
   const [link, setLink] = useState<string>("/")

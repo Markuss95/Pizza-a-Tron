@@ -6,7 +6,6 @@ import {
   ConfiguratorCheckout,
   Layout,
 } from "../components"
-
 const Configurator = () => {
   return (
     <Layout>
