@@ -16,6 +16,7 @@ export default (state = defaultStateValue, action: authAction) => {
     case "LOGIN":
       return {
         id: action.id,
+        accountCreation: "Your account is created!",
       }
     case "LOGOUT":
       return {}
