@@ -1,5 +1,3 @@
-import React from "react"
-
 interface orderState {
   toppings: string[]
   toppingsPrice: number

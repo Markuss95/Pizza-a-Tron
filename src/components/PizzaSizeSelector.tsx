@@ -5,6 +5,7 @@ import {
   setSizePrice,
   setSize,
 } from "../modules/configurator/redux/current_order/actions"
+
 const PizzaSizeSelector = ({ setSizePrice, currentOrder, setSizeAction }) => {
   const [size, setSize] = useState<String>(currentOrder.pizzaSize)
 

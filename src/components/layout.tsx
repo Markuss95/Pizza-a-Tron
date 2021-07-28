@@ -1,10 +1,8 @@
 import React, { useEffect } from "react"
-import { navigate } from "@reach/router"
-import { auth } from "../modules/firebase/firebase"
 import { connect } from "react-redux"
 import Navbar from "./Navbar"
 
-const Layout = ({ children, authUser }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
@@ -13,10 +11,4 @@ const Layout = ({ children, authUser }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    authUser: state.auth,
-  }
-}
-
-export default connect(mapStateToProps)(Layout)
+export default Layout
